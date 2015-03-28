@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 
-#define BRATE       780     // 9600 baud (BREGH=1)
+#define BRATE      1041     // 9600 baud (BREGH=1)
 #define U_ENABLE 0x8008     // enable the UART peripheral
 #define U_TX     0x0400     // enable transmission
 

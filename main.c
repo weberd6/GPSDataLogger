@@ -17,9 +17,12 @@ int main() {
 
     while (true) {
         while (!parse_buf_ready);
+        parse_buf_ready = false;
         nmea_string = strtok(parse_buf, "$");
-        gps_data = parseNMEA(nmea_string);
-        logWaypoint(gps_data);
+        if (nmea_string != NULL) {
+            if (!parseNMEA(nmea_string, &gps_data))
+                logWaypoint(&gps_data);
+        }
     }
 
     return 0;

@@ -21,7 +21,6 @@
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.h</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/main.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/write.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPX.h</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c</itemPath>
@@ -245,6 +244,7 @@
         <property key="UART 3" value="true"/>
         <property key="UART 4" value="true"/>
         <property key="USB" value="true"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

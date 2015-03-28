@@ -6,29 +6,34 @@
 
 #include "GPS_uart.h"
 
-#define MAX_BUFFER_SIZE 4096
+#define MAX_BUFFER_SIZE 128
 #define __U2_ISR    __attribute__((interrupt, shadow, no_auto_psv))
 
-bool parse_buf_ready;
+bool parse_buf_ready = false;
 char buffer1[MAX_BUFFER_SIZE];
 char buffer2[MAX_BUFFER_SIZE];
-char* fill_buf;
-char* parse_buf;
+char* fill_buf = buffer1;
+char* parse_buf = buffer2;
 char* temp;
-unsigned int i;
+unsigned int i = 0;
 
 void __U2_ISR _U2RXInterrupt() {
     unsigned char new_char = ReadUART2();
 
-    if (new_char == '$') {
+    if ((i == 0) && (new_char != '$'))
+        goto exit;
+
+    fill_buf[i++] = new_char;
+
+    if (new_char == '\n' || (i == MAX_BUFFER_SIZE-1)) {
         temp = fill_buf;
         fill_buf = parse_buf;
         parse_buf = temp;
         parse_buf_ready = true;
+        i = 0;
     }
 
-    fill_buf[i++] = new_char;
-
+exit:
     _U2RXIF = 0;
 }
 

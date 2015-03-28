@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-extern void logWaypoint(struct RMCData data);
+extern void logWaypoint(struct RMCData *data);
 
 #ifdef	__cplusplus
 }

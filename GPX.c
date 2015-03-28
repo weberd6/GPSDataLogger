@@ -128,6 +128,6 @@ void closeGPX () {
 #endif
 }
 
-void logWaypoint(struct RMCData data) {
+void logWaypoint(struct RMCData *data) {
     
 }

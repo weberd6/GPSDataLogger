@@ -12,24 +12,26 @@ enum direction_t {
     WEST,
 };
 
-enum status_t {
-    ACTIVE,
-    VOID_,
+struct date_t {
+    unsigned char month;
+    unsigned char day;
+    unsigned short year;
 };
 
-struct coordinate_t {
-    unsigned short degrees;
-    unsigned short minutes;
-    enum direction_t direction;
+struct time_t {
+    unsigned char hour;
+    unsigned char min;
+    double sec;
 };
 
 struct RMCData {
-    unsigned int fix_time;
-    enum status_t status;
-    struct coordinate_t latitude;
-    struct coordinate_t longitude;
+    struct time_t fix_time;
+    char status;
+    double latitude;
+    double longitude;
     double speed_knots;
-    unsigned int date;
+    struct date_t date;
+    double mag_var;
     char checksum; // 8-bit XOR of all characters between $ and *
 };
 
@@ -39,7 +41,7 @@ enum sentence_type_t {
 };
 
 extern enum sentence_type_t SentenceType(char* string);
-extern struct RMCData parseNMEA(char* string);
+extern int parseNMEA(char* string, struct RMCData *data);
 
 #ifdef	__cplusplus
 }
