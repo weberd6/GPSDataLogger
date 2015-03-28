@@ -39,6 +39,7 @@
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GraphicsConfig.h</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>/home/doug/MPLABXProjects</Elem>

@@ -91,6 +91,9 @@ void uMBInit( void)
     SST25_CS_TRIS = 0;
     FlashInit( &spi_config);
 #endif
+
+    InitGPS();
+
 } // uMBInit
 
 

@@ -15,9 +15,9 @@
 #include <pps.h>
 #include "drv_spi.h"
 #include "TouchScreen.h"
-#include "M25P80.h"
 #include "Graphics/Graphics.h"
 #include "MDD File System/FSIO.h"
+#include "GPS_uart.h"
 
 // function prototypes and macros
 void uMBInit( void);            // init standard hw configuration

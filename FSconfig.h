@@ -76,7 +76,7 @@
 
 // Comment this line out if you don't intend to format your card
 // Writes must be enabled to use the format function
-//#define ALLOW_FORMATS
+#define ALLOW_FORMATS
 /************************************************************************/
 
 // Uncomment this definition if you're using directories
@@ -92,7 +92,7 @@
 
 // Allows the use of the FSfprintf function
 // Writes must be enabled to use the FSprintf function
-//#define ALLOW_FSFPRINTF
+#define ALLOW_FSFPRINTF
 /************************************************************************/
 
 // If FAT32 support required then uncomment the following

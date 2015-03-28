@@ -1,15 +1,44 @@
+#include <stdbool.h>
+
 #include <p24EP512GU810.h>
+#include <timer.h>
 #include <uart.h>
 
-void InitGPS() {
-//    OpenI2C2 ( 0x8240 , 400);
-//    IdleI2C2();
+#include "GPS_uart.h"
 
-//    OpenTimer1( 0x8030, -1);
-//    TMR1 = 0;
-//    while (TMR1 < 100);
+#define MAX_BUFFER_SIZE 4096
+#define __U2_ISR    __attribute__((interrupt, shadow, no_auto_psv))
+
+bool parse_buf_ready;
+char buffer1[MAX_BUFFER_SIZE];
+char buffer2[MAX_BUFFER_SIZE];
+char* fill_buf;
+char* parse_buf;
+char* temp;
+unsigned int i;
+
+void __U2_ISR _U2RXInterrupt() {
+    unsigned char new_char = ReadUART2();
+
+    if (new_char == '$') {
+        temp = fill_buf;
+        fill_buf = parse_buf;
+        parse_buf = temp;
+        parse_buf_ready = true;
+    }
+
+    fill_buf[i++] = new_char;
+
+    _U2RXIF = 0;
 }
 
-void _ISR _U2RXInterrupt(void) {
+void InitGPS() {
+    _U2RXR   = 0x43;
+    _RP65R    = 0x03;
+    U2BRG   = BRATE;
+    U2MODE  = U_ENABLE;
+    U2STA   = U_TX;
+
     _U2RXIF = 0;
+    _U2RXIE = 1;
 }
