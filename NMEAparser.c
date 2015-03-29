@@ -138,7 +138,7 @@ int parseGPRMC(char* string, struct RMCData *data, unsigned char cs) {
     data_string = magneticVariation(data_string, data);
 
     // Checksum
-    return checksum(data_string, cs);
+    return 0;//checksum(data_string, cs);
 }
 
 int parseNMEA(char *string, struct RMCData *data) {

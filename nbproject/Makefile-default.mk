@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c /home/doug/MPLABXProjects/GPSDataLogger.X/main.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c
+SOURCEFILES_QUOTED_IF_SPACED=/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c /home/doug/MPLABXProjects/GPSDataLogger.X/main.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c /home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c /home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c /home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1831318040/NMEAparser.o ${OBJECTDIR}/_ext/1831318040/main.o ${OBJECTDIR}/_ext/1831318040/GPX.o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o ${OBJECTDIR}/_ext/1831318040/uMedia.o ${OBJECTDIR}/_ext/1831318040/FSIO.o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o ${OBJECTDIR}/_ext/1831318040/USBreader.o ${OBJECTDIR}/_ext/1831318040/usb_device.o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d ${OBJECTDIR}/_ext/1831318040/main.o.d ${OBJECTDIR}/_ext/1831318040/GPX.o.d ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d ${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d ${OBJECTDIR}/_ext/1831318040/uMedia.o.d ${OBJECTDIR}/_ext/1831318040/FSIO.o.d ${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d ${OBJECTDIR}/_ext/1831318040/USBreader.o.d ${OBJECTDIR}/_ext/1831318040/usb_device.o.d ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1831318040/NMEAparser.o ${OBJECTDIR}/_ext/1831318040/main.o ${OBJECTDIR}/_ext/1831318040/GPX.o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o ${OBJECTDIR}/_ext/1831318040/uMedia.o ${OBJECTDIR}/_ext/1831318040/FSIO.o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o ${OBJECTDIR}/_ext/1831318040/USBreader.o ${OBJECTDIR}/_ext/1831318040/usb_device.o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o ${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o ${OBJECTDIR}/_ext/1831318040/Primitive.o ${OBJECTDIR}/_ext/1831318040/IL9341.o ${OBJECTDIR}/_ext/1831318040/TimeDate.o ${OBJECTDIR}/_ext/1831318040/TimeDelay.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d ${OBJECTDIR}/_ext/1831318040/main.o.d ${OBJECTDIR}/_ext/1831318040/GPX.o.d ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d ${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d ${OBJECTDIR}/_ext/1831318040/uMedia.o.d ${OBJECTDIR}/_ext/1831318040/FSIO.o.d ${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d ${OBJECTDIR}/_ext/1831318040/USBreader.o.d ${OBJECTDIR}/_ext/1831318040/usb_device.o.d ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d ${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o.d ${OBJECTDIR}/_ext/1831318040/Primitive.o.d ${OBJECTDIR}/_ext/1831318040/IL9341.o.d ${OBJECTDIR}/_ext/1831318040/TimeDate.o.d ${OBJECTDIR}/_ext/1831318040/TimeDelay.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1831318040/NMEAparser.o ${OBJECTDIR}/_ext/1831318040/main.o ${OBJECTDIR}/_ext/1831318040/GPX.o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o ${OBJECTDIR}/_ext/1831318040/uMedia.o ${OBJECTDIR}/_ext/1831318040/FSIO.o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o ${OBJECTDIR}/_ext/1831318040/USBreader.o ${OBJECTDIR}/_ext/1831318040/usb_device.o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o
+OBJECTFILES=${OBJECTDIR}/_ext/1831318040/NMEAparser.o ${OBJECTDIR}/_ext/1831318040/main.o ${OBJECTDIR}/_ext/1831318040/GPX.o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o ${OBJECTDIR}/_ext/1831318040/uMedia.o ${OBJECTDIR}/_ext/1831318040/FSIO.o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o ${OBJECTDIR}/_ext/1831318040/USBreader.o ${OBJECTDIR}/_ext/1831318040/usb_device.o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o ${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o ${OBJECTDIR}/_ext/1831318040/Primitive.o ${OBJECTDIR}/_ext/1831318040/IL9341.o ${OBJECTDIR}/_ext/1831318040/TimeDate.o ${OBJECTDIR}/_ext/1831318040/TimeDelay.o
 
 # Source Files
-SOURCEFILES=/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c /home/doug/MPLABXProjects/GPSDataLogger.X/main.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c
+SOURCEFILES=/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c /home/doug/MPLABXProjects/GPSDataLogger.X/main.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c /home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c /home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c /home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c
 
 
 CFLAGS=
@@ -86,170 +86,240 @@ ${OBJECTDIR}/_ext/1831318040/NMEAparser.o: /home/doug/MPLABXProjects/GPSDataLogg
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/NMEAparser.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c  -o ${OBJECTDIR}/_ext/1831318040/NMEAparser.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c  -o ${OBJECTDIR}/_ext/1831318040/NMEAparser.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/main.o: /home/doug/MPLABXProjects/GPSDataLogger.X/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/main.c  -o ${OBJECTDIR}/_ext/1831318040/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/main.c  -o ${OBJECTDIR}/_ext/1831318040/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/main.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/GPX.o: /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPX.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPX.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c  -o ${OBJECTDIR}/_ext/1831318040/GPX.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPX.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c  -o ${OBJECTDIR}/_ext/1831318040/GPX.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPX.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/GPX.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o: /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c  -o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c  -o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/GPS_uart.o: /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPS_uart.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c  -o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c  -o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c  -o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c  -o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/uMedia.o: /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/uMedia.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/uMedia.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c  -o ${OBJECTDIR}/_ext/1831318040/uMedia.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/uMedia.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c  -o ${OBJECTDIR}/_ext/1831318040/uMedia.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/uMedia.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/uMedia.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/FSIO.o: /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/FSIO.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/FSIO.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c  -o ${OBJECTDIR}/_ext/1831318040/FSIO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/FSIO.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c  -o ${OBJECTDIR}/_ext/1831318040/FSIO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/FSIO.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/FSIO.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/SD-SPI.o: /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/SD-SPI.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c  -o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c  -o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/USBreader.o: /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/USBreader.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/USBreader.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  -o ${OBJECTDIR}/_ext/1831318040/USBreader.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/USBreader.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  -o ${OBJECTDIR}/_ext/1831318040/USBreader.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/USBreader.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/USBreader.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/usb_device.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_device.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_device.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  -o ${OBJECTDIR}/_ext/1831318040/usb_device.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_device.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  -o ${OBJECTDIR}/_ext/1831318040/usb_device.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_device.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_device.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  -o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  -o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o: /home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c  -o ${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/Primitive.o: /home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/Primitive.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/Primitive.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c  -o ${OBJECTDIR}/_ext/1831318040/Primitive.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/Primitive.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/Primitive.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/IL9341.o: /home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/IL9341.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/IL9341.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c  -o ${OBJECTDIR}/_ext/1831318040/IL9341.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/IL9341.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/IL9341.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/TimeDate.o: /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/TimeDate.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/TimeDate.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c  -o ${OBJECTDIR}/_ext/1831318040/TimeDate.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/TimeDate.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/TimeDate.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/TimeDelay.o: /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/TimeDelay.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/TimeDelay.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c  -o ${OBJECTDIR}/_ext/1831318040/TimeDelay.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/TimeDelay.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/TimeDelay.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 else
 ${OBJECTDIR}/_ext/1831318040/NMEAparser.o: /home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/NMEAparser.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c  -o ${OBJECTDIR}/_ext/1831318040/NMEAparser.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c  -o ${OBJECTDIR}/_ext/1831318040/NMEAparser.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/main.o: /home/doug/MPLABXProjects/GPSDataLogger.X/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/main.c  -o ${OBJECTDIR}/_ext/1831318040/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/main.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/main.c  -o ${OBJECTDIR}/_ext/1831318040/main.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/main.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/main.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/GPX.o: /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPX.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPX.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c  -o ${OBJECTDIR}/_ext/1831318040/GPX.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPX.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c  -o ${OBJECTDIR}/_ext/1831318040/GPX.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPX.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/GPX.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o: /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c  -o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c  -o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/GPS_uart.o: /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/GPS_uart.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c  -o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c  -o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c  -o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c  -o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/uMedia.o: /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/uMedia.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/uMedia.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c  -o ${OBJECTDIR}/_ext/1831318040/uMedia.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/uMedia.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c  -o ${OBJECTDIR}/_ext/1831318040/uMedia.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/uMedia.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/uMedia.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/FSIO.o: /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/FSIO.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/FSIO.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c  -o ${OBJECTDIR}/_ext/1831318040/FSIO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/FSIO.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c  -o ${OBJECTDIR}/_ext/1831318040/FSIO.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/FSIO.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/FSIO.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/SD-SPI.o: /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/SD-SPI.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c  -o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c  -o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/USBreader.o: /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/USBreader.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/USBreader.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  -o ${OBJECTDIR}/_ext/1831318040/USBreader.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/USBreader.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  -o ${OBJECTDIR}/_ext/1831318040/USBreader.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/USBreader.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/USBreader.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/usb_device.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_device.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_device.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  -o ${OBJECTDIR}/_ext/1831318040/usb_device.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_device.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  -o ${OBJECTDIR}/_ext/1831318040/usb_device.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_device.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_device.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  -o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  -o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o: /home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c  -o ${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/GOLFontDefault.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/Primitive.o: /home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/Primitive.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/Primitive.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c  -o ${OBJECTDIR}/_ext/1831318040/Primitive.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/Primitive.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/Primitive.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/IL9341.o: /home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/IL9341.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/IL9341.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c  -o ${OBJECTDIR}/_ext/1831318040/IL9341.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/IL9341.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/IL9341.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/TimeDate.o: /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/TimeDate.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/TimeDate.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c  -o ${OBJECTDIR}/_ext/1831318040/TimeDate.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/TimeDate.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/TimeDate.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/TimeDelay.o: /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/TimeDelay.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/TimeDelay.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c  -o ${OBJECTDIR}/_ext/1831318040/TimeDelay.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/TimeDelay.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-code -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/TimeDelay.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

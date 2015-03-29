@@ -80,7 +80,7 @@
 *	- USE_FONT_EXTERNAL - Font in external memory support.
 *
 *********************************************************************/
-#define FONTDEFAULT          TerminalFont
+//#define FONTDEFAULT          TerminalFont
 #define USE_FONT_FLASH 			// Support for fonts located in internal flash
 //#define USE_FONT_EXTERNAL		// Support for fonts located in external memory
 //#define USE_ANTIALIASED_FONTS

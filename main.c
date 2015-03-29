@@ -1,8 +1,11 @@
 #include <string.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 #include "PICConfig.h"
 #include "uMedia.h"
+
+#include "Graphics/Graphics.h"
 
 #include "GPS_uart.h"
 //#include "GPS_i2c.h"
@@ -12,9 +15,11 @@
 char file[32];
 int fileID = 0;
 bool logging = false;
+char timeDateString[32];
 
 char* nextFilename() {
-    return sprintf(file, "gps_data%d.gpx", fileID++);
+    sprintf(file, "gps_data%d.gpx", fileID++);
+    return file;
 }
 
 void startLogging() {
@@ -28,17 +33,33 @@ void stopLogging() {
 }
 
 void logData(struct RMCData *gps_data) {
-    if (!logging)
-        startLogging();
-    logWaypoint(&gps_data);
+//    if (!logging)
+//        startLogging();
+//    logWaypoint(gps_data);
+    sprintf(timeDateString, "%02u-%02u-%02u\
+                                %02u:%02u:%02u",
+            gps_data->date.month, gps_data->date.day, gps_data->date.year,
+            gps_data->fix_time.hour, gps_data->fix_time.min,
+            (unsigned int)gps_data->fix_time.sec);
+    OutTextXY(0, 0, timeDateString);
 }
 
 int main() {
     char *nmea_string;
     struct RMCData gps_data;
+    memset(&gps_data, 0, sizeof(struct RMCData));
 
     uMBInit();
-    initGPXFS();
+    InitGPS();
+    //InitGPXFS();
+    InitGraph();
+
+    SetColor(BLUE);
+    ClearDevice();
+    DisplayBacklightOn();
+
+    SetFont((void*)&GOLFontDefault);
+    SetColor(WHITE);
 
     while (true) {
         while (!parse_buf_ready);

@@ -42,6 +42,12 @@
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>/home/doug/MPLABXProjects</Elem>
@@ -82,7 +88,7 @@
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <C30>
-        <property key="code-model" value="default"/>
+        <property key="code-model" value="large-code"/>
         <property key="const-model" value="default"/>
         <property key="data-model" value="large-data"/>
         <property key="enable-all-warnings" value="true"/>

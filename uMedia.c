@@ -92,8 +92,6 @@ void uMBInit( void)
     FlashInit( &spi_config);
 #endif
 
-    InitGPS();
-
 } // uMBInit
 
 

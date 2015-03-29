@@ -117,7 +117,7 @@ void closeGPX () {
 #endif
 }
 
-void initGPXFS() {
+void InitGPXFS() {
     while (!MDD_MediaDetect());
     while (!FSInit());
 }
