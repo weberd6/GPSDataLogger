@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c /home/doug/MPLABXProjects/GPSDataLogger.X/main.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c
+SOURCEFILES_QUOTED_IF_SPACED=/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c /home/doug/MPLABXProjects/GPSDataLogger.X/main.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1831318040/NMEAparser.o ${OBJECTDIR}/_ext/1831318040/main.o ${OBJECTDIR}/_ext/1831318040/GPX.o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o ${OBJECTDIR}/_ext/1831318040/uMedia.o ${OBJECTDIR}/_ext/1831318040/FSIO.o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d ${OBJECTDIR}/_ext/1831318040/main.o.d ${OBJECTDIR}/_ext/1831318040/GPX.o.d ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d ${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d ${OBJECTDIR}/_ext/1831318040/uMedia.o.d ${OBJECTDIR}/_ext/1831318040/FSIO.o.d ${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1831318040/NMEAparser.o ${OBJECTDIR}/_ext/1831318040/main.o ${OBJECTDIR}/_ext/1831318040/GPX.o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o ${OBJECTDIR}/_ext/1831318040/uMedia.o ${OBJECTDIR}/_ext/1831318040/FSIO.o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o ${OBJECTDIR}/_ext/1831318040/USBreader.o ${OBJECTDIR}/_ext/1831318040/usb_device.o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1831318040/NMEAparser.o.d ${OBJECTDIR}/_ext/1831318040/main.o.d ${OBJECTDIR}/_ext/1831318040/GPX.o.d ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o.d ${OBJECTDIR}/_ext/1831318040/GPS_uart.o.d ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o.d ${OBJECTDIR}/_ext/1831318040/uMedia.o.d ${OBJECTDIR}/_ext/1831318040/FSIO.o.d ${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d ${OBJECTDIR}/_ext/1831318040/USBreader.o.d ${OBJECTDIR}/_ext/1831318040/usb_device.o.d ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1831318040/NMEAparser.o ${OBJECTDIR}/_ext/1831318040/main.o ${OBJECTDIR}/_ext/1831318040/GPX.o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o ${OBJECTDIR}/_ext/1831318040/uMedia.o ${OBJECTDIR}/_ext/1831318040/FSIO.o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o
+OBJECTFILES=${OBJECTDIR}/_ext/1831318040/NMEAparser.o ${OBJECTDIR}/_ext/1831318040/main.o ${OBJECTDIR}/_ext/1831318040/GPX.o ${OBJECTDIR}/_ext/1831318040/GPS_i2c.o ${OBJECTDIR}/_ext/1831318040/GPS_uart.o ${OBJECTDIR}/_ext/1831318040/usb_descriptors.o ${OBJECTDIR}/_ext/1831318040/uMedia.o ${OBJECTDIR}/_ext/1831318040/FSIO.o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o ${OBJECTDIR}/_ext/1831318040/USBreader.o ${OBJECTDIR}/_ext/1831318040/usb_device.o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o
 
 # Source Files
-SOURCEFILES=/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c /home/doug/MPLABXProjects/GPSDataLogger.X/main.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c
+SOURCEFILES=/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c /home/doug/MPLABXProjects/GPSDataLogger.X/main.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c /home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c /home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c /home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c
 
 
 CFLAGS=
@@ -145,6 +145,27 @@ ${OBJECTDIR}/_ext/1831318040/SD-SPI.o: /home/doug/MPLABXProjects/GPSDataLogger.X
 	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c  -o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/_ext/1831318040/USBreader.o: /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/USBreader.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/USBreader.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  -o ${OBJECTDIR}/_ext/1831318040/USBreader.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/USBreader.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/USBreader.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/usb_device.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_device.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_device.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  -o ${OBJECTDIR}/_ext/1831318040/usb_device.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_device.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_device.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  -o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -mno-eds-warn  -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/_ext/1831318040/NMEAparser.o: /home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
@@ -208,6 +229,27 @@ ${OBJECTDIR}/_ext/1831318040/SD-SPI.o: /home/doug/MPLABXProjects/GPSDataLogger.X
 	@${RM} ${OBJECTDIR}/_ext/1831318040/SD-SPI.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c  -o ${OBJECTDIR}/_ext/1831318040/SD-SPI.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/SD-SPI.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/USBreader.o: /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/USBreader.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/USBreader.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c  -o ${OBJECTDIR}/_ext/1831318040/USBreader.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/USBreader.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/USBreader.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/usb_device.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_device.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_device.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c  -o ${OBJECTDIR}/_ext/1831318040/usb_device.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_device.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_device.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o: /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1831318040" 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  /home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c  -o ${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d"      -mno-eds-warn  -g -omf=elf -mlarge-data -O0 -I"." -msmart-io=1 -Wall -msfr-warn=off
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1831318040/usb_function_msd_multi_sector.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 
