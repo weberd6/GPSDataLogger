@@ -29,17 +29,6 @@ const char disable_uart_string [] = { 0xB5, 0x62, 0x06, 0x00, // Header and ID
                                       0x00, 0x00,             // reserved4
                                       0x00, 0x00 };           // reserved5
 
-void initGPX() {
-    while (!MDD_MediaDetect());
-    while (!FSInit());
-}
-
-void gpsFile (const char* filename) {
-    pointer = FSfopen(filename, "w");
-    if (pointer == NULL)
-        while(true);
-}
-
 void openGPX () {
 #ifdef DEBUG
     printf("<gpx version=\"1.1\" creator=\"Doug Weber\">");
@@ -51,23 +40,23 @@ void openGPX () {
 #endif
 }
 
-void openWaypoint (unsigned int latitude, unsigned int longitude) {
+void openWaypoint (double latitude, double longitude) {
 #ifdef DEBUG
     printf("<wpt lat=\"%u\" lon=\"%u\">", latitude, longitude);
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer, "<wpt lat=\"%u\" lon=\"%u\">", latitude, longitude))
+    if(FSfprintf(pointer, "\t<wpt lat=\"%f\" lon=\"%f\">", latitude, longitude))
         while(true);
 #endif
 #endif
 }
 
-void timeDate (unsigned int time, unsigned int date) {
+void timeDate (struct time_t time, struct date_t date) {
 #ifdef DEBUG
     printf("<time></time>");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer, "<time></time>"))
+    if(FSfprintf(pointer, "\t\t<time></time>"))
         while(true);
 #endif
 #endif
@@ -78,7 +67,7 @@ void openExtensions() {
     printf("<extensions>");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer, "<extensions>"))
+    if(FSfprintf(pointer, "\t\t<extensions>"))
         while(true);
 #endif
 #endif
@@ -89,7 +78,7 @@ void speed(double knots) {
     printf("<speed>%f</speed>", knots);
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer,"<speed>%f</speed>", knots))
+    if(FSfprintf(pointer,"\t\t\t<speed>%f</speed>", knots))
         while(true);
 #endif
 #endif
@@ -100,7 +89,7 @@ void closeExtensions() {
     printf("</extensions>");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer,"</extensions>"))
+    if(FSfprintf(pointer,"<\t\t/extensions>"))
         while(true);
 #endif
 #endif
@@ -111,7 +100,7 @@ void closeWaypoint () {
     printf("</wpt>");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer,"</wpt>"))
+    if(FSfprintf(pointer,"<\t/wpt>"))
         while(true);
 #endif
 #endif
@@ -128,6 +117,31 @@ void closeGPX () {
 #endif
 }
 
+void initGPXFS() {
+    while (!MDD_MediaDetect());
+    while (!FSInit());
+}
+
+void gpsFileOpen (const char* filename) {
+    pointer = FSfopen(filename, "w");
+    if (pointer == NULL)
+        while(true);
+
+    openGPX();
+}
+
+void gpsFileClose () {
+    if (FSfclose(pointer))
+        while(true);
+
+    closeGPX();
+}
+
 void logWaypoint(struct RMCData *data) {
-    
+    openWaypoint (data->latitude, data->longitude);
+    timeDate (data->fix_time, data->date);
+    openExtensions();
+    speed(data->speed_knots);
+    closeExtensions();
+    closeWaypoint ();
 }
