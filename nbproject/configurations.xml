@@ -48,6 +48,9 @@
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.h</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreen.c</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreenResistive.c</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreenResistive.h</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>/home/doug/MPLABXProjects</Elem>

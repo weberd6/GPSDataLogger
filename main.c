@@ -5,8 +5,6 @@
 #include "PICConfig.h"
 #include "uMedia.h"
 
-#include "Graphics/Graphics.h"
-
 #include "GPS_uart.h"
 //#include "GPS_i2c.h"
 #include "NMEAparser.h"
@@ -16,6 +14,7 @@ char file[32];
 int fileID = 0;
 bool logging = false;
 char timeDateString[32];
+char s[64];
 
 char* nextFilename() {
     sprintf(file, "gps_data%d.gpx", fileID++);
@@ -53,13 +52,27 @@ int main() {
     InitGPS();
     //InitGPXFS();
     InitGraph();
+    TickInit(1);
+
+    TouchHardwareInit(NULL);
+    TouchCalculateCalPoints();
 
     SetColor(BLUE);
     ClearDevice();
     DisplayBacklightOn();
 
+    SetColor(BLACK);
+    Circle(20, 220, 10);
+    Circle(20, 220, 9);
+    Circle(20, 220, 8);
+
+    SetColor(BRIGHTRED);
+    FillCircle(20, 220, 9);
+
     SetFont((void*)&GOLFontDefault);
     SetColor(WHITE);
+
+    OutTextXY(40, 205, "Logging OFF");
 
     while (true) {
         while (!parse_buf_ready);
@@ -69,6 +82,11 @@ int main() {
             if (!parseNMEA(nmea_string, &gps_data)) {
                 logData(&gps_data);
             }
+        }
+
+        if ((TouchGetX() != -1) && (TouchGetY() != -1)) {
+            sprintf(s, "%d %d", TouchGetRawX(), TouchGetRawY());
+            OutTextXY(100, 100, s);
         }
     }
 
