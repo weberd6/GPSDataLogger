@@ -4,20 +4,6 @@
 #include "HardwareProfile.h"
 #include "MDD File System/SD-SPI.h"
 
-/** VARIABLES ******************************************************/
-#if defined(__18CXX)
-    #pragma udata
-#endif
-
-#if defined(__C30__) || defined(__C32__) || defined __XC16__
-//The LUN variable definition is critical to the MSD function driver.  This
-//  array is a structure of function pointers that are the functions that 
-//  will take care of each of the physical media.  For each additional LUN
-//  that is added to the system, an entry into this array needs to be added
-//  so that the stack can know where to find the physical layer functions.
-//  In this example the media initialization function is named 
-//  "MediaInitialize", the read capacity function is named "ReadCapacity",
-//  etc.  
 LUN_FUNCTIONS LUN[MAX_LUN + 1] = 
 {
     {
@@ -30,7 +16,6 @@ LUN_FUNCTIONS LUN[MAX_LUN + 1] =
         &MDD_SDSPI_SectorWrite
     }
 };
-#endif
 
 /* Standard Response to INQUIRY command stored in ROM 	*/
 const ROM InquiryResponse inq_resp = {
@@ -52,96 +37,20 @@ const ROM InquiryResponse inq_resp = {
     }
 };
 
-static void InitializeSystem(void);
-void USBDeviceTasks(void);
-void ProcessIO(void);
-void YourHighPriorityISRCode(void);
-void YourLowPriorityISRCode(void);
-void USBCBSendResume(void);
-
-void usbInit(void) {
-    InitializeSystem();
-
-    #if defined(USB_INTERRUPT)
-        USBDeviceAttach();
-    #endif
-
-    while(1) {
-        #if defined(USB_POLLING)
-		// Check bus status and service USB interrupts.
-        USBDeviceTasks(); Therefore when using polling, this function should be called
-        				  // regularly (such as once every 1.8ms or faster** [see 
-        				  // inline code comments in usb_device.c for explanation when
-        				  // "or faster" applies])  In most cases, the USBDeviceTasks() 
-        				  // function does not take very long to execute (ex: <100 
-        				  // instruction cycles) before it returns.
-        #endif
-    				  
-
-		// Application-specific tasks.
-		// Application related code may be added here, or in the ProcessIO() function.
-        ProcessIO();        
-    }
-}
-
-static void InitializeSystem(void)
-{
-    #if defined(USE_USB_BUS_SENSE_IO)
-    tris_usb_bus_sense = INPUT_PIN; // See HardwareProfile.h
-    #endif
-
-    #if defined(USE_SELF_POWER_SENSE_IO)
-    tris_self_power = INPUT_PIN;	// See HardwareProfile.h
-    #endif
-
-    MDD_SDSPI_InitIO();
-
-    USBDeviceInit();	//usb_device.c.  Initializes USB module SFRs and firmware
-    					//variables to known states.
-}//end InitializeSystem
-
 void ProcessIO(void)
 {   
     // User Application USB tasks
-    if((USBDeviceState < CONFIGURED_STATE)||(USBSuspendControl==1)) return;
+    if(USBDeviceState < CONFIGURED_STATE) return;
 
-    MSDTasks();    
-}//end ProcessIO
+    MSDTasks();
+}
 
 // ******************************************************************************************************
 // ************** USB Callback Functions ****************************************************************
 // ******************************************************************************************************
 void USBCBSuspend(void)
 {
-	//Example power saving code.  Insert appropriate code here for the desired
-	//application behavior.  If the microcontroller will be put to sleep, a
-	//process similar to that shown below may be used:
-	
-	//ConfigureIOPinsForLowPower();
-	//SaveStateOfAllInterruptEnableBits();
-	//DisableAllInterruptEnableBits();
-	//EnableOnlyTheInterruptsWhichWillBeUsedToWakeTheMicro();	//should enable at least USBActivityIF as a wake source
-	//Sleep();
-	//RestoreStateOfAllPreviouslySavedInterruptEnableBits();	//Preferrably, this should be done in the USBCBWakeFromSuspend() function instead.
-	//RestoreIOPinsToNormal();									//Preferrably, this should be done in the USBCBWakeFromSuspend() function instead.
 
-	//IMPORTANT NOTE: Do not clear the USBActivityIF (ACTVIF) bit here.  This bit is 
-	//cleared inside the usb_device.c file.  Clearing USBActivityIF here will cause 
-	//things to not work as intended.	
-	
-
-    #if defined(__C30__) || defined __XC16__
-    #if 0
-        U1EIR = 0xFFFF;
-        U1IR = 0xFFFF;
-        U1OTGIR = 0xFFFF;
-        IFS5bits.USB1IF = 0;
-        IEC5bits.USB1IE = 1;
-        U1OTGIEbits.ACTVIE = 1;
-        U1OTGIRbits.ACTVIF = 1;
-        Sleep();
-    #endif
-    #endif
 }
 
 #if 0
@@ -164,72 +73,28 @@ void __attribute__ ((interrupt)) _USB1Interrupt(void)
 
 void USBCBWakeFromSuspend(void)
 {
-	// If clock switching or other power savings measures were taken when
-	// executing the USBCBSuspend() function, now would be a good time to
-	// switch back to normal full power run mode conditions.  The host allows
-	// 10+ milliseconds of wakeup time, after which the device must be 
-	// fully back to normal, and capable of receiving and processing USB
-	// packets.  In order to do this, the USB module must receive proper
-	// clocking (IE: 48MHz clock must be available to SIE for full speed USB
-	// operation).  
-	// Make sure the selected oscillator settings are consistent with USB 
-    // operation before returning from this function.
+
 }
 
 void USBCB_SOF_Handler(void)
 {
-    // No need to clear UIRbits.SOFIF to 0 here.
-    // Callback caller is already doing that.
+
 }
 
-/*******************************************************************
- * Function:        void USBCBErrorHandler(void)
- *
- * PreCondition:    None
- *
- * Input:           None
- *
- * Output:          None
- *
- * Side Effects:    None
- *
- * Overview:        The purpose of this callback is mainly for
- *                  debugging during development. Check UEIR to see
- *                  which error causes the interrupt.
- *
- * Note:            None
- *******************************************************************/
 void USBCBErrorHandler(void)
 {
-    // No need to clear UEIR to 0 here.
-    // Callback caller is already doing that.
 
-	// Typically, user firmware does not need to do anything special
-	// if a USB error occurs.  For example, if the host sends an OUT
-	// packet to your device, but the packet gets corrupted (ex:
-	// because of a bad connection, or the user unplugs the
-	// USB cable during the transmission) this will typically set
-	// one or more USB error interrupt flags.  Nothing specific
-	// needs to be done however, since the SIE will automatically
-	// send a "NAK" packet to the host.  In response to this, the
-	// host will normally retry to send the packet again, and no
-	// data loss occurs.  The system will typically recover
-	// automatically, without the need for application firmware
-	// intervention.
-	
-	// Nevertheless, this callback function is provided, such as
-	// for debugging purposes.
 }
 
 void USBCBCheckOtherReq(void)
 {
     USBCheckMSDRequest();
-}//end
+}
 
 void USBCBStdSetDscHandler(void)
 {
     // Must claim session ownership if supporting this request
-}//end
+}
 
 
 void USBCBInitEP(void)

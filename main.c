@@ -4,11 +4,13 @@
 
 #include "PICConfig.h"
 #include "uMedia.h"
+#include "USB/usb.h"
 
 #include "GPS_uart.h"
 //#include "GPS_i2c.h"
 #include "NMEAparser.h"
 #include "GPX.h"
+#include "USBReader.h"
 
 char file[32];
 int fileID = 0;
@@ -44,20 +46,40 @@ void logData(struct RMCData *gps_data) {
 }
 
 int main() {
-    char *nmea_string;
-    struct RMCData gps_data;
-    memset(&gps_data, 0, sizeof(struct RMCData));
+//    char *nmea_string;
+//    struct RMCData gps_data;
+//    memset(&gps_data, 0, sizeof(struct RMCData));
+//#ifdef _SFLASH
+//    DRV_SPI_INIT_DATA spi_config = SPI_FLASH_CONFIG;
+//#endif
 
     uMBInit();
-    InitGPS();
-    //InitGPXFS();
-    InitGraph();
-    TickInit(1);
+    //InitGPS();
+    //InitGraph();
+    //TickInit(1);
+    InitGPXFS();
+    USBDeviceInit();
+    USBDeviceAttach();
 
-    TouchHardwareInit(NULL);
-    TouchCalculateCalPoints();
+    while(true) {
+        ProcessIO();
+    }
 
-    SetColor(BLUE);
+//#ifdef _SFLASH
+    // 4. Initialize the serial Flash CS I/O
+//    SST25_CS_LAT = 1;
+//    SST25_CS_TRIS = 0;
+//    FlashInit( &spi_config);
+//#endif
+
+//    TouchInit(NVMWrite, NVMRead, NVMSectorErase, NULL);
+
+//    TouchHardwareInit(NULL);
+//    TouchCalculateCalPoints();
+
+    
+
+/*    SetColor(BLUE);
     ClearDevice();
     DisplayBacklightOn();
 
@@ -89,6 +111,6 @@ int main() {
             OutTextXY(100, 100, s);
         }
     }
-
+*/
     return 0;
 }

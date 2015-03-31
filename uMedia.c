@@ -36,12 +36,9 @@ void TickInit( unsigned period_ms)
 
 void uMBInit( void)
 {
-#ifdef _SFLASH
-    DRV_SPI_INIT_DATA spi_config = SPI_FLASH_CONFIG;
-#endif
     // 1. init clock for 40MIPS operation
     // Fosc= Fin*M/(N1*N2), Fcy=Fosc/2
-    //Fosc = 8MHz * 80/(4*2) = 60MHz for 8MHz input clock
+    //Fosc = 8MHz * 80/(4*2) = 80MHz for 8MHz input clock
     PLLFBD = 78;                    // M = (PLLFDB+2)
     CLKDIVbits.PLLPOST = 1;         // N2=4
     CLKDIVbits.PLLPRE = 0;          // N1=2
@@ -62,6 +59,15 @@ void uMBInit( void)
     while(OSCCONbits.LOCK != 1)
     { };
 
+    // USB Clock setup
+    // Favco = Fin*(M/N1)
+    // Favco = 8MHz*(24/2) = 96 MHz
+    // Faclk = Favco/N = 96 MHz/2 = 48MHz
+    ACLKCON3 = 0x24C1; // APLL disabled, Primary oscillator is source, N1 = 2, N = 2
+    ACLKDIV3 = 0x7; // M = 24
+    ACLKCON3bits.ENAPLL = 1; //Start APLL
+    while(ACLKCON3bits.APLLCK != 1); //Waiting for the APLL locking
+
     // 2. disable analog inputs
     ANSELA = 0;   // all inputs digital
     ANSELB = 0;   // all inputs digital
@@ -69,28 +75,6 @@ void uMBInit( void)
     ANSELD = 0;   // all inputs digital
     ANSELE = 0;   // all inputs digital
     ANSELG = 0;   // all inputs digital
-
-    //3. configure PPS (not required on the PIC24EP for standard Mikromedia apps
-//    PPSUnLock;
-
-//    UART
-//    PPSInput( PPS_U2RX,  PPS_RP10);     // U2RX =RP10 F4/pin 49
-//    PPSInput( PPS_U2CTS, PPS_RPI32);    // U2CTS=RP32 F12/pin40
-//    PPSOutput( PPS_RP17, PPS_U2TX);     // U2TX =RP17 F5/pin 50
-//    PPSOutput( PPS_RP31, PPS_U2RTS);    // U2RTS=RP31 F13pin 39
-
-
-//    PPSOutput( PPS_RP23, PPS_OC1);      // OC1 =RP23 D2/pin 77
-
-//    Done, lock the PPS configuration
-//    PPSLock;
-
-#ifdef _SFLASH
-    // 4. Initialize the serial Flash CS I/O
-    SST25_CS_LAT = 1;
-    SST25_CS_TRIS = 0;
-    FlashInit( &spi_config);
-#endif
 
 } // uMBInit
 

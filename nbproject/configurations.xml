@@ -41,7 +41,6 @@
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.h</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd_multi_sector.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c</itemPath>
@@ -51,6 +50,8 @@
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreen.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreenResistive.c</itemPath>
     <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreenResistive.h</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/USBReader.h</itemPath>
+    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd.c</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>/home/doug/MPLABXProjects</Elem>

@@ -1,6 +1,6 @@
 /*********************************************************************
   File Information:
-    FileName:        usb_function_msd_multi_sector.c
+    FileName:        usb_function_msd.c
     Dependencies:    See INCLUDES section below
     Processor:       PIC18, PIC24, or PIC32
     Compiler:        C18, C30, or C32
@@ -72,14 +72,22 @@
 Change History:
   Rev         Description
   ----------  ----------------------------------------------------------
-  >2.9b       Initial creation of this file.  File originated from
-              usb_function_msd.c, from the MCHPFSUSB Framework v2.9b.
-              This version updates the MSDReadHandle() and MSDWriteHandler()
-              functions to take advantage of the multi-sector read/write
-              capability of SD/MMC media cards.  This can significantly enhance
-              maximum transfer rates, although the exact amount of improvement
-              will vary based on brand/type of media.
-  2.9h        Added fix to allow MSD devices to be ejected in Mac OSX and so that
+  2.6 - 2.7a  No change
+  2.8		  Improved error case checking, error case recovery, and 
+			  sense key/status reporting to the host.
+  			  Implemented adjustable read/write failure retry feature.
+			  Fixed minor bug that would have interfered with supporting 
+			  more than 7 LUNs simultaneously.
+  2.9         Added additional error case checking and handling so as to
+              be able to pass all USB20CV MSC tests. Note: If using the internal
+              flash demo, the MSD volume must be sized > 64kB, in order to pass 
+              all USB20CV tests. The USB20CV MSC tests attempt to write up to 
+              64kB worth of data during the test.  If the MSD volume is <64kB, 
+              this portion of the test will fail, but this is intentional and 
+              correct behavior, since we obviously can't successfully write more
+              data than the entire drive volume size.
+              General improvements/improved flows/improved inline code comments.
+  2.9d        Added fix to allow MSD devices to be ejected in Mac OSX and so that
               read-only media does not create an error in Mac OSX every time it is
               enumerated.
 
@@ -89,7 +97,6 @@ Change History:
 #include "USB/usb.h"
 #include "HardwareProfile.h"
 #include "FSconfig.h"
-#include "MDD File System/SD-SPI.h"
 
 #include "USB/usb_function_msd.h"
 
@@ -166,8 +173,6 @@ BOOL MSDCBWValid;
 
 static WORD_VAL TransferLength;
 static DWORD_VAL LBA;
-ASYNC_IO AsyncReadWriteInfo;
-BYTE fetchStatus;
 
 /* 
  * Number of Blocks and Block Length are global because 
@@ -229,7 +234,6 @@ static void MSDComputeDeviceInAndResidue(WORD);
 void USBMSDInit(void)
 {
     //Prepare to receive the first CBW
-    USBMSDInHandle = 0;    
     USBMSDOutHandle = USBRxOnePacket(MSD_DATA_OUT_EP,(BYTE*)&msd_cbw,MSD_OUT_EP_SIZE);
     //Initialize IN handle to point to first available IN MSD bulk endpoint entry
     USBMSDInHandle = USBGetNextHandle(MSD_DATA_IN_EP, IN_TO_HOST);
@@ -241,8 +245,6 @@ void USBMSDInit(void)
     gblNumBLKS.Val = 0;
     gblBLKLen.Val = 0;
     MSDCBWValid = TRUE;
-    AsyncReadWriteInfo.bStateVariable = ASYNC_READ_COMPLETE;
-    fetchStatus = ASYNC_READ_COMPLETE;
 
     gblMediaPresent = 0;
 
@@ -1105,24 +1107,8 @@ static void MSDComputeDeviceInAndResidue(WORD DiExpected)
  		None
  
   *****************************************************************************/
-#pragma idata
 BYTE MSDReadHandler(void)
 {
-    //static BYTE fetchStatus = PRE_FETCH_COMPLETE;
-    BYTE* ptrSave;
-    static BYTE* ptrLastData = (BYTE*)&msd_buffer[0];
-    static BYTE* ptrNextData = (BYTE*)&msd_buffer[MSD_IN_EP_SIZE];
-    static BOOL NewDataAlreadyAvailable;
-   
-    //Call our data fetching poller, unless we already have unprocessed data
-    //ready for our retrieval.  In this case, we need to stop calling our
-    //MDD_SDSPI_AsyncReadTasks(), until we are ready to consume the new buffer 
-    //worth of data and update the AsyncReadWriteInfo structure with a new pointer.
-    if((fetchStatus != ASYNC_READ_NEW_PACKET_READY) && (fetchStatus != ASYNC_READ_COMPLETE))
-    {
-        fetchStatus = MDD_SDSPI_AsyncReadTasks(&AsyncReadWriteInfo);   
-    }    
-    
     switch(MSDReadState)
     {
         case MSD_READ10_WAIT:
@@ -1143,110 +1129,101 @@ BYTE MSDReadHandler(void)
                 break;
             }    
 
-            //Assume success initially, msd_csw.bCSWStatus will get set to 0x01 
-            //or 0x02 later if an error is detected during the actual read sequence.        	
-        	msd_csw.bCSWStatus=0x0;
-        	msd_csw.dCSWDataResidue=gblCBW.dCBWDataTransferLength;
-        	
-        	//Set up our fetch info data structure.
-            AsyncReadWriteInfo.wNumBytes = MSD_IN_EP_SIZE;
-            AsyncReadWriteInfo.pBuffer = (BYTE*)ptrNextData;
-            AsyncReadWriteInfo.dwAddress = LBA.Val;
-            AsyncReadWriteInfo.dwBytesRemaining = gblCBW.dCBWDataTransferLength;
-            AsyncReadWriteInfo.bStateVariable = ASYNC_READ_QUEUED; 
-            //Advance state machine to begin fetching data
-            MSDReadState = MSD_READ10_XMITING_DATA;
-            fetchStatus = ASYNC_READ_BUSY;
-            NewDataAlreadyAvailable = FALSE;
-            //Fall through...
-        case MSD_READ10_XMITING_DATA:
-            //Check if the MDD_SDSPI_AsyncReadTasks() function has finished sending us
-            //a new packet of data yet.  If not, keep calling it until we get some data.
-            if(NewDataAlreadyAvailable == FALSE) 
-            {
-             	//Try to fetch a new packet of data
-             	if(fetchStatus == ASYNC_READ_NEW_PACKET_READY) //Check if the MDD_SDSPI_AsyncReadTasks() function is about to return on data on the next call
-             	{
-                	fetchStatus = MDD_SDSPI_AsyncReadTasks(&AsyncReadWriteInfo); 
-                	NewDataAlreadyAvailable = TRUE;               
-            	}
-            	else
-            	{
-                	fetchStatus = MDD_SDSPI_AsyncReadTasks(&AsyncReadWriteInfo);                 	
-                }   	
-            }    
-
-        	//Check if we are done handling the whole READ10 request.
-        	if((fetchStatus == ASYNC_READ_COMPLETE) && (msd_csw.dCSWDataResidue == 0))
-        	{
-            	MSDReadState = MSD_READ10_AWAITING_COMPLETION;
-            	break;
-            }  
-            else if(fetchStatus == ASYNC_READ_ERROR)
-            {
-                MSDReadState = MSD_READ10_ERROR;
-            }              
-            
-            //Check if we currently have any new data ready and we are ready to
-            //send the data over USB to the host.
-            if((!USBHandleBusy(USBMSDInHandle)) && (NewDataAlreadyAvailable == TRUE))
-            {
-                //Swap the data pointers.
-                ptrSave = ptrLastData;
-                ptrLastData = ptrNextData;
-                ptrNextData = ptrSave;
-                //Prepare the USB module to send an IN transaction worth of data to the host.
-                USBMSDInHandle = USBTxOnePacket(MSD_DATA_IN_EP,ptrLastData,MSD_IN_EP_SIZE); 
-                //Advance state machine now that the fetch operation is returning data.
-                AsyncReadWriteInfo.pBuffer = (BYTE*)ptrNextData; //Swap pointer, so we use the other buffer (the one not currently in use by USB).
-                //We are sending a USB packet worth of data.  Decrement counter.
-            	msd_csw.dCSWDataResidue-=MSD_IN_EP_SIZE;  
-            	//Get the next operation started, so it can occur concurrently 
-            	//with the above USB transfer, for maximum transfer speeds.
-   	            if(fetchStatus == ASYNC_READ_NEW_PACKET_READY)
-   	            {
-                	fetchStatus = MDD_SDSPI_AsyncReadTasks(&AsyncReadWriteInfo);  
-                	NewDataAlreadyAvailable = TRUE;
-                }	
-                else
-                {                    
-                 	fetchStatus = MDD_SDSPI_AsyncReadTasks(&AsyncReadWriteInfo);  
-                	NewDataAlreadyAvailable = FALSE;                   
-                }    
-            }  
-            break;
-        case MSD_READ10_AWAITING_COMPLETION:
-            //If the old data isn't completely sent over USB yet, need to stay
-            //in this state and return, until the endpoint becomes available agin.
-            if(USBHandleBusy(USBMSDInHandle))
-            {
-                break;
-            }
-            else
+            MSDReadState = MSD_READ10_BLOCK;
+            //Fall through to MSD_READ_BLOCK
+        case MSD_READ10_BLOCK:
+            if(TransferLength.Val == 0)
             {
                 MSDReadState = MSD_READ10_WAIT;
-            }    
-            break;
-        case MSD_READ10_ERROR:
-        default:
-            //A read error occurred.  Notify the host.
-            msd_csw.bCSWStatus=0x01;  //indicate error
-            //Set error status sense keys, so the host can check them later
-            //to determine how to proceed.
-            gblSenseData[LUN_INDEX].SenseKey=S_MEDIUM_ERROR;
-	        gblSenseData[LUN_INDEX].ASC=ASC_NO_ADDITIONAL_SENSE_INFORMATION;
-	        gblSenseData[LUN_INDEX].ASCQ=ASCQ_NO_ADDITIONAL_SENSE_INFORMATION;
-            //Make sure the IN endpoint is available before advancing the state machine.
-            //Host will expect CSW next.
+                break;
+            }
+            
+            TransferLength.Val--;					// we have read 1 LBA
+            MSDReadState = MSD_READ10_SECTOR;
+            //Fall through to MSD_READ10_SECTOR
+        case MSD_READ10_SECTOR:
+            //if the old data isn't completely sent yet
             if(USBHandleBusy(USBMSDInHandle) != 0)
             {
                 break;
             }
-            //Stall data endpoint and advance state machine
-            USBStallEndpoint(MSD_DATA_IN_EP,1); //Will cause host to perform clear endpoint halt, then request CSW
+            
+            //Try to read a sector worth of data from the media, but check for
+            //possible errors.
+    		if(LUNSectorRead(LBA.Val, (BYTE*)&msd_buffer[0]) != TRUE)
+    		{
+				if(MSDRetryAttempt < MSD_FAILED_READ_MAX_ATTEMPTS)
+				{
+				    MSDRetryAttempt++;
+                    break;
+				}
+				else
+				{  
+    				//Too many consecutive failed reads have occurred.  Need to
+    				//give up and abandon the sector read attempt; something must
+    				//be wrong and we don't want to get stuck in an infinite loop.
+    				//Need to indicate to the host that a device error occurred.
+    				//However, we can't send the CSW immediately, since the host
+    				//still expects to receive sector read data on the IN endpoint 
+    				//first.  Therefore, we still send dummy bytes, before
+    				//we send the CSW with the failed status in it.
+    				msd_csw.bCSWStatus=0x02;		// Indicate phase error 0x02 
+													// (option #1 from BOT section 6.6.2)
+                    //Set error status sense keys, so the host can check them later
+                    //to determine how to proceed.
+                    gblSenseData[LUN_INDEX].SenseKey=S_MEDIUM_ERROR;
+			        gblSenseData[LUN_INDEX].ASC=ASC_NO_ADDITIONAL_SENSE_INFORMATION;
+			        gblSenseData[LUN_INDEX].ASCQ=ASCQ_NO_ADDITIONAL_SENSE_INFORMATION;
+					USBStallEndpoint(MSD_DATA_IN_EP, IN_TO_HOST);
+					MSDReadState = MSD_READ10_WAIT;
+					break;
+                }
+            }//else we successfully read a sector worth of data from our media
+
+            LBA.Val++;
+			msd_csw.dCSWDataResidue=BLOCKLEN_512;//in order to send the
+                                                 //512 bytes of data read
+                                                 
+            ptrNextData=(BYTE *)&msd_buffer[0];
+            
+            MSDReadState = MSD_READ10_TX_SECTOR;
+            //Fall through to MSD_READ10_TX_SECTOR
+        case MSD_READ10_TX_SECTOR:
+            if(msd_csw.dCSWDataResidue == 0)
+            {
+                MSDReadState = MSD_READ10_BLOCK;
+                break;
+            }
+            
+            MSDReadState = MSD_READ10_TX_PACKET;
+            //Fall through to MSD_READ10_TX_PACKET
+            
+        case MSD_READ10_TX_PACKET:
+    		/* Write next chunk of data to EP Buffer and send */
+            
+            //Make sure the endpoint is available before using it.
+            if(USBHandleBusy(USBMSDInHandle))
+            {
+                break;
+            }
+            //Prepare the USB module to send an IN transaction worth of data to the host.
+            USBMSDInHandle = USBTxOnePacket(MSD_DATA_IN_EP,ptrNextData,MSD_IN_EP_SIZE);
+            
+ 			MSDReadState = MSD_READ10_TX_SECTOR;
+
+    		gblCBW.dCBWDataTransferLength-=	MSD_IN_EP_SIZE;
+    		msd_csw.dCSWDataResidue-=MSD_IN_EP_SIZE;
+    		ptrNextData+=MSD_IN_EP_SIZE;
+            break;
+        
+        default:
+            //Illegal condition, should never occur.  In the event that it ever
+            //did occur anyway, try to notify the host of the error.
+            msd_csw.bCSWStatus=0x02;  //indicate "Phase Error"
+			USBStallEndpoint(MSD_DATA_IN_EP, IN_TO_HOST);
+            //Advance state machine
             MSDReadState = MSD_READ10_WAIT;
-    }
-    
+    }//switch(MSDReadState)
     
     return MSDReadState;
 }
@@ -1277,17 +1254,6 @@ BYTE MSDReadHandler(void)
  *****************************************************************************/
 BYTE MSDWriteHandler(void)
 {
-    static BYTE LastWriteStatus;
-    static unsigned short int BufferredBytes;
-    static BYTE* pNextData;
-    static BYTE* pUSBReceive;
-    static USB_HANDLE MSDOutHandle1;
-    static USB_HANDLE MSDOutHandle2;
-    static USB_HANDLE NextHandleToCheck;
-    static DWORD PacketRequestCounter;
-    static DWORD PacketsRemainingToBeReceived;
-
-
     switch(MSDWriteState)
     {
         case MSD_WRITE10_WAIT:
@@ -1297,9 +1263,8 @@ BYTE MSDWriteHandler(void)
         	LBA.v[2]=gblCBW.CBWCB[3];
         	LBA.v[1]=gblCBW.CBWCB[4];
         	LBA.v[0]=gblCBW.CBWCB[5];
-        	TransferLength.v[1]=gblCBW.CBWCB[7];    //TransferLength is in units of LBAs to transfer.
+        	TransferLength.v[1]=gblCBW.CBWCB[7];
         	TransferLength.v[0]=gblCBW.CBWCB[8];
-            msd_csw.dCSWDataResidue = gblCBW.dCBWDataTransferLength;
 
             //Do some error case checking.
             if(MSDCheckForErrorCases(TransferLength.Val * (DWORD)MEDIA_SECTOR_SIZE) != MSD_ERROR_CASE_NO_ERROR)
@@ -1307,8 +1272,7 @@ BYTE MSDWriteHandler(void)
                 //An error was detected.  The MSDCheckForErrorCases() function will
                 //have taken care of setting the proper states to report the error to the host.
                 break;
-            } 
-        
+            }    
       		//Check if the media is write protected before deciding what
       		//to do with the data.
       		if(LUNWriteProtectState()) 
@@ -1330,175 +1294,121 @@ BYTE MSDWriteHandler(void)
           	    return MSDWriteState;
           	}
         	
-        	//Initialize our ASYNC_IO structure, so the MDD_SDSPI_AsyncWriteTasks()
-        	//API will know what to do.
-        	AsyncReadWriteInfo.bStateVariable = ASYNC_WRITE_QUEUED;
-        	AsyncReadWriteInfo.dwAddress = LBA.Val;
-        	AsyncReadWriteInfo.dwBytesRemaining = gblCBW.dCBWDataTransferLength;
-        	AsyncReadWriteInfo.pBuffer = (BYTE*)&msd_buffer[0];
-        	AsyncReadWriteInfo.wNumBytes = MSD_OUT_EP_SIZE;
-        	LastWriteStatus = ASYNC_WRITE_BUSY;
-   	
-        	
-            //Initialize other parameters
-            PacketRequestCounter = gblCBW.dCBWDataTransferLength / MSD_OUT_EP_SIZE;
-            PacketsRemainingToBeReceived = PacketRequestCounter;
-            BufferredBytes = 0;
-            pNextData = (BYTE*)&msd_buffer[0];
-            pUSBReceive = (BYTE*)&msd_buffer[0];
-            
-            //Arm both MSD bulk OUT endpoints (even and odd) to begin receiving
-            //the data to write to the media, from the host.
-            if((!USBHandleBusy(USBMSDOutHandle)) && (!USBHandleBusy(USBGetNextHandle(MSD_DATA_OUT_EP, OUT_FROM_HOST))))
+        	MSD_State = MSD_WRITE10_BLOCK;
+        	//Fall through to MSD_WRITE10_BLOCK
+        case MSD_WRITE10_BLOCK:
+            if(TransferLength.Val == 0)
             {
-                MSDOutHandle1 = USBRxOnePacket(MSD_DATA_OUT_EP, pUSBReceive, MSD_OUT_EP_SIZE);
-                pUSBReceive += MSD_OUT_EP_SIZE;
-                MSDOutHandle2 = USBRxOnePacket(MSD_DATA_OUT_EP, pUSBReceive, MSD_OUT_EP_SIZE);
-                pUSBReceive += MSD_OUT_EP_SIZE;
-
-                PacketRequestCounter -= 2u;
+                MSDWriteState = MSD_WRITE10_WAIT;
+                break;
             }
-            else
-            {
-                //Something is wrong.  The endpoints should have been free at 
-                //this point in the code.
-                msd_csw.bCSWStatus = MSD_CSW_PHASE_ERROR;
-                USBStallEndpoint(MSD_DATA_OUT_EP, OUT_FROM_HOST);
-          		MSDWriteState = MSD_WRITE10_WAIT;
-          		break;                
-            }        
-
-            NextHandleToCheck = MSDOutHandle1;
-            USBMSDOutHandle = NextHandleToCheck;
-    
+            
+            MSDWriteState = MSD_WRITE10_RX_SECTOR;
+            ptrNextData=(BYTE *)&msd_buffer[0];
+              
+        	msd_csw.dCSWDataResidue=BLOCKLEN_512;
         	
-        	MSDWriteState = MSD_WRITE10_RX_SECTOR;
             //Fall through to MSD_WRITE10_RX_SECTOR
         case MSD_WRITE10_RX_SECTOR:
         {
-      	    //Check if we have pending data to receive, and have actually received it.
-      	    //Also make sure we have some room in our receive buffer RAM before
-      	    //processing the newest data and re-arming the EP to receive even more
-      	    //data.
-      	    if((PacketsRemainingToBeReceived != 0) && (!USBHandleBusy(NextHandleToCheck)) && (BufferredBytes < (2u * MSD_OUT_EP_SIZE )))
-      	    {
-          	    //We just finished receiving a packet worth of data.  Make sure
-          	    //it was the expected size.
-          		if(USBHandleGetLength(NextHandleToCheck) != MSD_OUT_EP_SIZE)
-          		{
-              		//The host sent us an unexpected short packet.  This is
-              		//presumably an error, possibly a phase error (ex: host 
-              		//send a CBW, instead of a data packet), since bulk 
-              		//endpoint sizes are required to be a power of 2, which 
-              		//happens to be exact integer divider of the write block
-              		//size (512).
-              		msd_csw.bCSWStatus = MSD_CSW_PHASE_ERROR;
-              		USBStallEndpoint(MSD_DATA_OUT_EP, OUT_FROM_HOST);
-              		MSDWriteState = MSD_WRITE10_WAIT;
-              		break;
-                }  		
-          		BufferredBytes += MSD_OUT_EP_SIZE;
-          		//Reduce number of future packets we expect to receive for this
-          		//Write10 request.
-          		PacketsRemainingToBeReceived--;              	    
-          	       
-          	    if(NextHandleToCheck == MSDOutHandle1)
-          	    {
-          	        NextHandleToCheck = MSDOutHandle2;      	                  	    
-          	    }
-          	    else
-          	    {
-              	    NextHandleToCheck = MSDOutHandle1;      	                  	    
-              	}        
-              	
-              	//Re-arm the endpoint now, if we still need more data from the
-              	//host to finish the Write10 request.
-              	if(PacketRequestCounter != 0)
-              	{
-                  	USBMSDOutHandle = USBRxOnePacket(MSD_DATA_OUT_EP, pUSBReceive, MSD_OUT_EP_SIZE);
-                    //Decrement remaining packets to be requested, so we know when
-                    //to stop requesting more data.
-                    PacketRequestCounter--;
-    
-              		//Increment next receive location pointer, but check for wraparound
-              		pUSBReceive += MSD_OUT_EP_SIZE;
-              		if(pUSBReceive >= (BYTE*)&msd_buffer[4u * (WORD)MSD_OUT_EP_SIZE])
-              		{
-                  		pUSBReceive = (BYTE*)&msd_buffer[0];
-                    }   
-                } 
-          	} 
- 
+      		/* Read 512B into msd_buffer*/
+      		if(msd_csw.dCSWDataResidue>0) 
+      		{
+                if(USBHandleBusy(USBMSDOutHandle) == TRUE)
+                {
+                    break;
+                }
 
-          	if(LastWriteStatus == ASYNC_WRITE_BUSY)
-          	{
-              	//Just keep calling the function until it is ready to receive new
-              	//data to write to the media.
-              	if(msd_csw.bCSWStatus == 0x00)
-              	{
-              	    LastWriteStatus = MDD_SDSPI_AsyncWriteTasks(&AsyncReadWriteInfo);
-              	}    
-            } 
-      	    
-      	    if(LastWriteStatus == ASYNC_WRITE_ERROR)
+                USBMSDOutHandle = USBRxOnePacket(MSD_DATA_OUT_EP,ptrNextData,MSD_OUT_EP_SIZE);
+                MSDWriteState = MSD_WRITE10_RX_PACKET;
+                //Fall through to MSD_WRITE10_RX_PACKET
+      	    }
+      	    else
       	    {
-          	    //Some unexpected error occurred.  Notify the host.
-          		msd_csw.bCSWStatus = 0x01;
-          		USBStallEndpoint(MSD_DATA_OUT_EP, OUT_FROM_HOST);
-          		MSDWriteState = MSD_WRITE10_WAIT;
-          	    break;
-          	}    
-      	    if(LastWriteStatus == ASYNC_WRITE_COMPLETE)
-      	    {
-          	    //The media is now fully done with all packets of the write request.
-          	    MSDWriteState = MSD_WRITE10_WAIT;
-                USBMSDOutHandle = USBGetNextHandle(MSD_DATA_OUT_EP, OUT_FROM_HOST);
-          	    break;
-          	}    
-  
-            //Check if the media write state machine wants data, and we have 
-            //data ready to send it.
-            if((LastWriteStatus == ASYNC_WRITE_SEND_PACKET) && (BufferredBytes > 0))
+          		//We finished receiving a sector worth of data from the host.
+          		//Check if the media is write protected before deciding what
+          		//to do with the data.
+          		if(LUNWriteProtectState()) 
+                {
+                    //The device appears to be write protected.
+              	    //Let host know error occurred.  The bCSWStatus flag is also used by
+              	    //the write handler, to know not to even attempt the write sequence.
+              	    msd_csw.bCSWStatus=0x01;    
+              	    
+                    //Set sense keys so the host knows what caused the error.
+              	    gblSenseData[LUN_INDEX].SenseKey=S_NOT_READY;
+              	    gblSenseData[LUN_INDEX].ASC=ASC_WRITE_PROTECTED;
+              	    gblSenseData[LUN_INDEX].ASCQ=ASCQ_WRITE_PROTECTED;
+              	}
+   			    MSDWriteState = MSD_WRITE10_SECTOR;     
+      			break;
+          	}
+        }
+        //Fall through to MSD_WRITE10_RX_PACKET
+        case MSD_WRITE10_RX_PACKET:
+            if(USBHandleBusy(USBMSDOutHandle) == TRUE)
             {
-                //Send the next packet worth of data.
-                AsyncReadWriteInfo.pBuffer = pNextData;
-                if(msd_csw.bCSWStatus == 0x00)
-                {
-              		msd_csw.dCSWDataResidue -= MSD_OUT_EP_SIZE;
-                    LastWriteStatus = MDD_SDSPI_AsyncWriteTasks(&AsyncReadWriteInfo);
-                }    
-
-                //Update pointer to point to the next data location, so we will
-                //be ready for the next iteration of this code.  Make sure
-                //to check for pointer wraparound.
-                pNextData += MSD_OUT_EP_SIZE;
-                if(pNextData >= (BYTE*)&msd_buffer[4u * (WORD)MSD_OUT_EP_SIZE])
-                {
-                    pNextData = (BYTE*)&msd_buffer[0];
-                }    
-                
-                //We removed data from the buffer.  
-                BufferredBytes -= MSD_OUT_EP_SIZE;
-                //Check for underflow.  This shouldn't happen, and would only
-                //occur in some kind of error case.
-                if((signed short int)BufferredBytes < 0)
-                {
-                    BufferredBytes = 0;
-                }    
-            }    
-
+                break;
+            }
+            
+        	gblCBW.dCBWDataTransferLength-=USBHandleGetLength(USBMSDOutHandle);		// 64B read
+        	msd_csw.dCSWDataResidue-=USBHandleGetLength(USBMSDOutHandle);
+            ptrNextData += MSD_OUT_EP_SIZE;
+            
+            MSDWriteState = MSD_WRITE10_RX_SECTOR;
             break;
-
-        }//case MSD_WRITE10_RX_SECTOR:
+        case MSD_WRITE10_SECTOR:
+        {
+            //Make sure that no error has been detected, before performing the write
+            //operation.  If there was an error, skip the write operation, but allow
+            //the TransferLength to continue decrementing, so that we can eventually
+            //receive all OUT bytes that the host is planning on sending us.  Only
+            //after that is complete will the host send the IN token for the CSW packet,
+            //which will contain the bCSWStatus letting it know an error occurred.
+      		if(msd_csw.bCSWStatus == 0x00)
+      		{
+          		if(LUNSectorWrite(LBA.Val, (BYTE*)&msd_buffer[0], (LBA.Val==0)?TRUE:FALSE) != TRUE)
+          		{
+              		//The write operation failed for some reason.  Keep track of retry
+              		//attempts and abort if repeated write attempts also fail.
+    				if(MSDRetryAttempt < MSD_FAILED_WRITE_MAX_ATTEMPTS)
+    				{
+    				    MSDRetryAttempt++;
+                        break;
+    				}
+    				else
+    				{  
+        				//Too many consecutive failed write attempts have occurred. 
+        				//Need to give up and abandon the write attempt.
+        				msd_csw.bCSWStatus = MSD_CSW_COMMAND_FAILED; //Indicate error during CSW phase
+						//Set error status sense keys, so the host can check them later
+                        //to determine how to proceed.
+                        gblSenseData[LUN_INDEX].SenseKey=S_MEDIUM_ERROR;
+    			        gblSenseData[LUN_INDEX].ASC=ASC_NO_ADDITIONAL_SENSE_INFORMATION;
+    			        gblSenseData[LUN_INDEX].ASCQ=ASCQ_NO_ADDITIONAL_SENSE_INFORMATION;
+                    }              		
+          		}
+      		}
+      
+            //One LBA is written (unless an error occurred).  Advance state
+            //variables so we can eventually finish handling the CBW request.
+      		LBA.Val++;				
+      		TransferLength.Val--;      
+            MSDWriteState = MSD_WRITE10_BLOCK;
+            break;
+        } 
+        
         default:
             //Illegal condition which should not occur.  If for some reason it
             //does, try to let the host know know an error has occurred.
-            msd_csw.bCSWStatus = MSD_CSW_PHASE_ERROR;    //Phase Error
+            msd_csw.bCSWStatus=0x02;    //Phase Error
+			USBStallEndpoint(MSD_DATA_OUT_EP, OUT_FROM_HOST);
             MSDWriteState = MSD_WRITE10_WAIT;            
     }
     
     return MSDWriteState;
 }
+
 
 
 /******************************************************************************
