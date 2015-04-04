@@ -20,6 +20,7 @@ char timeDateString[32];
 char s[64];
 BOOL initResults;
 FSFILE *logFile;
+BUTTON *startStopButton;
 
 void InitializeSystem();
 void logData(struct RMCData *gps_data);
@@ -99,17 +100,17 @@ void InitializeSystem() {
     SetFont((void*)&GOLFontDefault);
     OutTextXY(40, 205, "Logging OFF");
 
-    BtnCreate(  1,                  // Unique ID
-                190,                // left
-                190,                // top
-                310,                // right
-                230,                // bottom
-                0,                  // radius
-                BTN_DRAW,           // state
-                NULL,               // no bitmap
-                "Start",            // text
-                NULL                // default style scheme
-             );
+    startStopButton = BtnCreate(  1,                // Unique ID
+                                190,                // left
+                                190,                // top
+                                310,                // right
+                                230,                // bottom
+                                0,                  // radius
+                                BTN_DRAW,           // state
+                                NULL,               // no bitmap
+                                "Start",            // text
+                                NULL                // default style scheme
+                              );
 }
 
 void startLogging() {
@@ -124,8 +125,10 @@ void startLogging() {
     // Show green dot
     FillCircle(20, 220, 9);
 
-    sprintf(file, "gps_data%dg.gpx", fileID++);
-    logFile = gpsFileOpen(file);
+    startStopButton->pText = "Stop";
+
+    //sprintf(file, "gps_data%dg.gpx", fileID++);
+    logFile = gpsFileOpen("gps_data.gpx");
 }
 
 void stopLogging() {
@@ -139,6 +142,8 @@ void stopLogging() {
 
     // Show red dot
     FillCircle(20, 220, 9);
+
+    startStopButton->pText = "Start";
 
     gpsFileClose();
 }
@@ -161,10 +166,10 @@ void logData(struct RMCData *gps_data) {
 
     if (initResults == TRUE) {
         if(logFile != NULL) {
-            //logWaypoint(gps_data);
+            logWaypoint(gps_data);
         } else {
-            sprintf(file, "gps_data%dg.gpx", fileID++);
-            logFile = gpsFileOpen(file);
+            //sprintf(file, "gps_data.gpx", fileID++);
+            logFile = gpsFileOpen("gps_data.gpx");
         }
     } else {
         if(MDD_SDSPI_MediaDetect() == TRUE) {

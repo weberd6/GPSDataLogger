@@ -28,82 +28,50 @@ const char disable_uart_string [] = { 0xB5, 0x62, 0x06, 0x00, // Header and ID
                                       0x00, 0x00 };           // reserved5
 
 void openGPX () {
-#ifdef DEBUG
-    printf("<gpx version=\"1.1\" creator=\"Doug Weber\">");
-#else
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer, "<gpx version=\"1.1\" creator=\"Doug Weber\">");
-#endif
+    FSfprintf(pointer, "<gpx version=\"1.1\" creator=\"Doug Weber\">\n");
 #endif
 }
 
 void openWaypoint (double latitude, double longitude) {
-#ifdef DEBUG
-    printf("<wpt lat=\"%u\" lon=\"%u\">", latitude, longitude);
-#else
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer, "\t<wpt lat=\"%f\" lon=\"%f\">", latitude, longitude);
-#endif
+    FSfprintf(pointer, "\t<wpt lat=\"%f\" lon=\"%f\">\n", latitude, longitude);
 #endif
 }
 
 void timeDate (struct time_t time, struct date_t date) {
-#ifdef DEBUG
-    printf("<time></time>");
-#else
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer, "\t\t<time></time>");
-#endif
+    FSfprintf(pointer, "\t\t<time></time>\n");
 #endif
 }
 
 void openExtensions() {
-#ifdef DEBUG
-    printf("<extensions>");
-#else
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer, "\t\t<extensions>");
-#endif
+    FSfprintf(pointer, "\t\t<extensions>\n");
 #endif
 }
 
 void speed(double knots) {
-#ifdef DEBUG
-    printf("<speed>%f</speed>", knots);
-#else
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer,"\t\t\t<speed>%f</speed>", knots);
-#endif
+    FSfprintf(pointer,"\t\t\t<speed>%f</speed>\n", knots);
 #endif
 }
 
 void closeExtensions() {
-#ifdef DEBUG
-    printf("</extensions>");
-#else
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer,"<\t\t/extensions>");
-#endif
+    FSfprintf(pointer,"\t\t</extensions>\n");
 #endif
 }
 
 void closeWaypoint () {
-#ifdef DEBUG
-    printf("</wpt>");
-#else
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer,"<\t/wpt>");
-#endif
+    FSfprintf(pointer,"\t</wpt>\n\n");
 #endif
 }
 
 void closeGPX () {
-#ifdef DEBUG
-    printf("</gpx>");
-#else
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer,"</gpx>");
-#endif
+    FSfprintf(pointer,"</gpx>\n");
 #endif
 }
 
@@ -114,10 +82,10 @@ FSFILE * gpsFileOpen (const char* filename) {
 }
 
 void gpsFileClose () {
+    closeGPX();
+
     if (FSfclose(pointer))
         while(true);
-
-    closeGPX();
 }
 
 void logWaypoint(struct RMCData *data) {
