@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "./MDD File System/FSIO.h"
-
 #include "GPX.h"
 
 FSFILE *pointer;
@@ -34,8 +32,7 @@ void openGPX () {
     printf("<gpx version=\"1.1\" creator=\"Doug Weber\">");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer, "<gpx version=\"1.1\" creator=\"Doug Weber\">"))
-        while(true);
+    FSfprintf(pointer, "<gpx version=\"1.1\" creator=\"Doug Weber\">");
 #endif
 #endif
 }
@@ -45,8 +42,7 @@ void openWaypoint (double latitude, double longitude) {
     printf("<wpt lat=\"%u\" lon=\"%u\">", latitude, longitude);
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer, "\t<wpt lat=\"%f\" lon=\"%f\">", latitude, longitude))
-        while(true);
+    FSfprintf(pointer, "\t<wpt lat=\"%f\" lon=\"%f\">", latitude, longitude);
 #endif
 #endif
 }
@@ -56,8 +52,7 @@ void timeDate (struct time_t time, struct date_t date) {
     printf("<time></time>");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer, "\t\t<time></time>"))
-        while(true);
+    FSfprintf(pointer, "\t\t<time></time>");
 #endif
 #endif
 }
@@ -67,8 +62,7 @@ void openExtensions() {
     printf("<extensions>");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer, "\t\t<extensions>"))
-        while(true);
+    FSfprintf(pointer, "\t\t<extensions>");
 #endif
 #endif
 }
@@ -78,8 +72,7 @@ void speed(double knots) {
     printf("<speed>%f</speed>", knots);
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer,"\t\t\t<speed>%f</speed>", knots))
-        while(true);
+    FSfprintf(pointer,"\t\t\t<speed>%f</speed>", knots);
 #endif
 #endif
 }
@@ -89,8 +82,7 @@ void closeExtensions() {
     printf("</extensions>");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer,"<\t\t/extensions>"))
-        while(true);
+    FSfprintf(pointer,"<\t\t/extensions>");
 #endif
 #endif
 }
@@ -100,8 +92,7 @@ void closeWaypoint () {
     printf("</wpt>");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer,"<\t/wpt>"))
-        while(true);
+    FSfprintf(pointer,"<\t/wpt>");
 #endif
 #endif
 }
@@ -111,22 +102,15 @@ void closeGPX () {
     printf("</gpx>");
 #else
 #ifdef ALLOW_FSFPRINTF
-    if(FSfprintf(pointer,"</gpx>"))
-        while(true);
+    FSfprintf(pointer,"</gpx>");
 #endif
 #endif
 }
 
-void InitGPXFS() {
-    while (!FSInit());
-}
-
-void gpsFileOpen (const char* filename) {
+FSFILE * gpsFileOpen (const char* filename) {
     pointer = FSfopen(filename, "w");
-    if (pointer == NULL)
-        while(true);
-
     openGPX();
+    return pointer;
 }
 
 void gpsFileClose () {
