@@ -4,6 +4,20 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_config.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/USB/usb.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/uMBconfig.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreenResistive.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/HardwareProfile.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GraphicsConfig.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPX.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/FSconfig.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.h</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/PICConfig.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -12,46 +26,36 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreen.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreenResistive.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/main.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/Button.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GOL.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GOLSchemeDefault.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/M25P80.c</itemPath>
+      <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/drv_spi.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/NMEAparser.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/main.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPX.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPX.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_i2c.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/FSconfig.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_config.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_descriptors.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/USB/usb.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/HardwareProfile.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/PICConfig.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/uMedia.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/uMBconfig.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GraphicsConfig.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/FSIO.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/SD-SPI.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GPS_uart.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/USBreader.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_device.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/GOLFontDefault.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/Primitive.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/IL9341.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDelay.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TimeDate.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreen.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreenResistive.c</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/TouchScreenResistive.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/USBReader.h</itemPath>
-    <itemPath>/home/doug/MPLABXProjects/GPSDataLogger.X/usb_function_msd.c</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>/home/doug/MPLABXProjects</Elem>
@@ -157,7 +161,7 @@
         <property key="general-code-protect" value="no_code_protect"/>
         <property key="general-write-protect" value="no_write_protect"/>
         <property key="generate-cross-reference-file" value="false"/>
-        <property key="heap-size" value=""/>
+        <property key="heap-size" value="4096"/>
         <property key="input-libraries" value=""/>
         <property key="linker-stack" value="true"/>
         <property key="linker-symbols" value=""/>
@@ -257,7 +261,6 @@
         <property key="UART 3" value="true"/>
         <property key="UART 4" value="true"/>
         <property key="USB" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
