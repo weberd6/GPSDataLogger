@@ -77,7 +77,7 @@ GFX_COLOR   _colorTransparent;
 SHORT       _colorTransparentEnable;
 #endif
 
-//#define USE_PRIMITIVE_PUTIMAGE
+#define USE_PRIMITIVE_PUTIMAGE
 #ifndef USE_PRIMITIVE_PUTIMAGE
     #warning "This driver does not support partial putImage feature. To enable partial putimage feature, uncomment the macro USE_PRIMITIVE_PUTIMAGE in this file. This will enable the PutImageXBPPYYY() in the Primitive.c implementation."
 #endif
