@@ -47,7 +47,7 @@ char* latitude(char* string, struct RMCData *data) {
     if (string[11] == 'S')
         data->latitude = 0 - data->latitude;
 
-    return string + 12*sizeof(char);
+    return string + 13*sizeof(char);
 }
 
 char* longitude(char* string, struct RMCData *data) {
@@ -56,10 +56,10 @@ char* longitude(char* string, struct RMCData *data) {
     
     string[11] = '\0';
     data->longitude = (string[0]-48)*100 + (string[1]-48)*10 + (string[2]-48) + 1/60 * (atof(&string[3]));
-    if (string[11] == 'W')
+    if (string[12] == 'W')
         data->longitude = 0 - data->longitude;
 
-    return string + 13*sizeof(char);
+    return string + 14*sizeof(char);
 }
 
 char* speedk(char* string, struct RMCData *data) {
@@ -85,7 +85,7 @@ char* date(char* string, struct RMCData *data) {
 
 char* magneticVariation(char* string, struct RMCData *data) {
     if (*string == ',')
-        return string + sizeof(char);
+        return string + 2*sizeof(char);
 
     string[5] = '\0';
     data->mag_var = atof(string);
