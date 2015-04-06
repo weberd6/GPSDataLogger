@@ -29,53 +29,53 @@ const char disable_uart_string [] = { 0xB5, 0x62, 0x06, 0x00, // Header and ID
 
 void openGPX () {
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer, "<gpx version=\"1.1\" creator=\"Doug Weber\">\n");
+    FSfprintf(pointer, "<gpx version=\"1.1\" creator=\"Doug Weber\">\r\n");
 #endif
 }
 
 void openWaypoint (double latitude, double longitude) {
 #ifdef ALLOW_FSFPRINTF
     char string[64];
-    sprintf(string, "\t<wpt lat=\"%02.3f\" lon=\"%02.3f\">\n", latitude, longitude);
+    sprintf(string, "\t<wpt lat=\"%02.3f\" lon=\"%02.3f\">\r\n", latitude, longitude);
     FSfprintf(pointer, string);
 #endif
 }
 
 void timeDate (struct time_t time, struct date_t date) {
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer, "\t\t<time></time>\n");
+    FSfprintf(pointer, "\t\t<time></time>\r\n");
 #endif
 }
 
 void openExtensions() {
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer, "\t\t<extensions>\n");
+    FSfprintf(pointer, "\t\t<extensions>\r\n");
 #endif
 }
 
 void speed(double knots) {
 #ifdef ALLOW_FSFPRINTF
     char string[64];
-    sprintf(string, "\t\t\t<speed>%02.3f</speed>\n", knots);
+    sprintf(string, "\t\t\t<speed>%02.3f</speed>\r\n", knots);
     FSfprintf(pointer, string);
 #endif
 }
 
 void closeExtensions() {
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer,"\t\t</extensions>\n");
+    FSfprintf(pointer,"\t\t</extensions>\r\n");
 #endif
 }
 
 void closeWaypoint () {
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer,"\t</wpt>\n\n");
+    FSfprintf(pointer,"\t</wpt>\r\n\r\n");
 #endif
 }
 
 void closeGPX () {
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer,"</gpx>\n");
+    FSfprintf(pointer,"</gpx>\r\n");
 #endif
 }
 
