@@ -193,20 +193,35 @@ char* month(unsigned int m) {
     return mon;
 }
 
+unsigned int getHour(struct RMCData *gps_data) {
+    unsigned int hour = gps_data->fix_time.hour;
+
+    if (gps_data->fix_time.hour > 12) {
+        hour -= 12;
+    }
+
+    if (hour > 4) {
+        hour -= 4;
+    } else {
+        hour = hour + 12 - 4;
+    }
+
+    if ((gps_data->fix_time.hour - 4) > 11)
+        meridian[0] = 'P';
+    else
+        meridian[0] = 'A';
+
+    return hour;
+}
+
 void logData(struct RMCData *gps_data) {
     char oldlatlon_string[64];
     char oldDateString[32];
 
-    if ((gps_data->fix_time.hour - 4) > 11) {
-        meridian[0] = 'P';
-    } else
-        meridian[0] = 'A';
-
     // Time
     SetColor(BACKGROUND_COLOR);
     OutTextXY(185, 0, timeString);
-    sprintf(timeString, "%02u:%02u:%02u %s",
-            ((gps_data->fix_time.hour - 4) > 12) ? gps_data->fix_time.hour - 16 : gps_data->fix_time.hour - 4,
+    sprintf(timeString, "%02u:%02u:%02u %s", getHour(gps_data),
             gps_data->fix_time.min, (unsigned int)gps_data->fix_time.sec, meridian);
     SetColor(WHITE);
     OutTextXY(185, 0, timeString);
