@@ -36,7 +36,7 @@ void openGPX () {
 void openWaypoint (double latitude, double longitude) {
 #ifdef ALLOW_FSFPRINTF
     char string[64];
-    sprintf(string, "\t<wpt lat=\"%02.3f\" lon=\"%02.3f\">\r\n", latitude, longitude);
+    sprintf(string, "\t<wpt lat=\"%02.5f\" lon=\"%02.5f\">\r\n", latitude, longitude);
     FSfprintf(pointer, string);
 #endif
 }
