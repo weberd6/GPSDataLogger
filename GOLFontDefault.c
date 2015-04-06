@@ -3798,14 +3798,14 @@ asm(".byte 0x00");        //
 asm(".byte 0x00, 0x00");        //                 
 asm(".byte 0x00, 0x00");        //                 
 asm(".byte 0x00, 0x00");        //                 
+asm(".byte 0x78, 0x00");        //    ****
+asm(".byte 0xCC, 0x00");        //   **  **
 asm(".byte 0xCC, 0x00");        //   **  **        
-asm(".byte 0xCC, 0x00");        //   **  **        
-asm(".byte 0xCC, 0x00");        //   **  **        
-asm(".byte 0xCC, 0x00");        //   **  **        
-asm(".byte 0xCC, 0x00");        //   **  **        
-asm(".byte 0xCC, 0x00");        //   **  **        
-asm(".byte 0xCC, 0x00");        //   **  **        
-asm(".byte 0xC4, 0x00");        //   *   **        
+asm(".byte 0xCC, 0x00");        //   **  **
+asm(".byte 0xCC, 0x00");        //   **  **
+asm(".byte 0x78, 0x00");        //    ****
+asm(".byte 0x00, 0x00");        //
+asm(".byte 0x00, 0x00");        //
 asm(".byte 0x00, 0x00");        //                 
 asm(".byte 0x00, 0x00");        //                 
 asm(".byte 0x00, 0x00");        //                 

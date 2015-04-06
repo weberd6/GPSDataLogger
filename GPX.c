@@ -35,7 +35,9 @@ void openGPX () {
 
 void openWaypoint (double latitude, double longitude) {
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer, "\t<wpt lat=\"%f\" lon=\"%f\">\n", latitude, longitude);
+    char string[64];
+    sprintf(string, "\t<wpt lat=\"%02.3f\" lon=\"%02.3f\">\n", latitude, longitude);
+    FSfprintf(pointer, string);
 #endif
 }
 
@@ -53,7 +55,9 @@ void openExtensions() {
 
 void speed(double knots) {
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer,"\t\t\t<speed>%f</speed>\n", knots);
+    char string[64];
+    sprintf(string, "\t\t\t<speed>%02.3f</speed>\n", knots);
+    FSfprintf(pointer, string);
 #endif
 }
 
@@ -77,15 +81,14 @@ void closeGPX () {
 
 FSFILE * gpsFileOpen (const char* filename) {
     pointer = FSfopen(filename, "w");
-    openGPX();
+    if (pointer)
+        openGPX();
     return pointer;
 }
 
 void gpsFileClose () {
     closeGPX();
-
-    if (FSfclose(pointer))
-        while(true);
+    FSfclose(pointer);
 }
 
 void logWaypoint(struct RMCData *data) {

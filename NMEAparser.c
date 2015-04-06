@@ -43,7 +43,7 @@ char* latitude(char* string, struct RMCData *data) {
         return string + 2*sizeof(char);
 
     string[10] = '\0';
-    data->latitude = (string[0]-48)*10 + (string[1]-48) + 1/60 * (atof(&string[2]));
+    data->latitude = (string[0]-48)*10 + (string[1]-48) + (atof(&string[2]))/60;
     if (string[11] == 'S')
         data->latitude = 0 - data->latitude;
 
@@ -55,7 +55,7 @@ char* longitude(char* string, struct RMCData *data) {
         return string + 2*sizeof(char);
     
     string[11] = '\0';
-    data->longitude = (string[0]-48)*100 + (string[1]-48)*10 + (string[2]-48) + 1/60 * (atof(&string[3]));
+    data->longitude = (string[0]-48)*100 + (string[1]-48)*10 + (string[2]-48) + (atof(&string[3]))/60;
     if (string[12] == 'W')
         data->longitude = 0 - data->longitude;
 
