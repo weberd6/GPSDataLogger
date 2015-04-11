@@ -16,8 +16,8 @@
 #define BACKGROUND_COLOR RGBConvert(0, 0, 64)
 
 char file[32];
-int fileID = 0;
 bool logging = false;
+char timeDateFileString[16];
 char timeString[32];
 char dateString[32];
 char latlong_string[64];
@@ -127,8 +127,8 @@ void startLogging() {
 
     startStopButton->pText = "Stop";
 
-    //sprintf(file, "gps_data%dg.gpx", fileID++);
-    logFile = gpsFileOpen("gps_data.gpx");
+    sprintf(file, "GPSData%s.GPX", timeDateFileString);
+    logFile = gpsFileOpen(file);
 }
 
 void stopLogging() {
@@ -218,6 +218,10 @@ void logData(struct RMCData *gps_data) {
     char oldlatlon_string[64];
     char oldDateString[32];
 
+    sprintf(timeDateFileString, "%02u%02u%02u.%02u%02u%02u", gps_data->date.year,
+            gps_data->date.month, gps_data->date.day, gps_data->fix_time.hour,
+            gps_data->fix_time.min, (unsigned int)gps_data->fix_time.sec);
+
     // Time
     SetColor(BACKGROUND_COLOR);
     OutTextXY(185, 0, timeString);
@@ -230,7 +234,7 @@ void logData(struct RMCData *gps_data) {
     strcpy(oldDateString, dateString);
     sprintf(dateString, "%s %02u, 20%02u", month(gps_data->date.month),
             gps_data->date.day, gps_data->date.year);
-    if (strcmp(oldDateString, dateString) != 0) {
+    if ((strcmp(oldDateString, dateString) != 0) && (gps_data->date.month != 0)) {
         SetColor(BACKGROUND_COLOR);
         OutTextXY(0,0, oldDateString);
         SetColor(WHITE);
@@ -256,22 +260,19 @@ void logData(struct RMCData *gps_data) {
     } else {
         SetColor(BACKGROUND_COLOR);
         OutTextXY(30, 30, "Error: SD Card not detected.");
-        initResults = TRUE;
     }
 
     if (!logging)
         return;
 
+    // Resilient
     if (initResults == TRUE) {
         if(logFile != NULL) {
             logWaypoint(gps_data);
-        } else {
-            //sprintf(file, "gps_data.gpx", fileID++);
-            logFile = gpsFileOpen("gps_data.gpx");
         }
     } else {
         if(MDD_SDSPI_MediaDetect() == TRUE) {
-            initResults = TRUE;
+            initResults = FSInit();
         }
     }
 }

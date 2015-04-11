@@ -64,10 +64,12 @@
 /************** Compiler options to enable/Disable Features based on user's application ******************/
 /* *******************************************************************************************************/
 
+// Support long file names
+#define SUPPORT_LFN
+/************************************************************************/
 
 // Uncomment this to use the FindFirst, FindNext, and FindPrev
 #define ALLOW_FILESEARCH
-/************************************************************************/
 /************************************************************************/
 
 // Comment this line out if you don't intend to write data to the card
