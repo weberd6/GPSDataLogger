@@ -5,27 +5,6 @@
 #include "GPX.h"
 
 FSFILE *pointer;
-const char enable_i2c_string [] = { 0xB5, 0x62, 0x06, 0x00, // Header and ID
-                                    0x00,                   // portID
-                                    0x00,                   // reserved0
-                                    0x00, 0x00,             // txReady
-                                    0x00, 0x00, 0x00, 0x84, // mode
-                                    0x00, 0x00, 0x00, 0x00, // reserved3
-                                    0x00, 0x03,             // inProtoMask
-                                    0x00, 0x02,             // outProtoMask
-                                    0x00, 0x00,             // reserved4
-                                    0x00, 0x00 };           // reserved5
-
-const char disable_uart_string [] = { 0xB5, 0x62, 0x06, 0x00, // Header and ID
-                                      0x01,                   // portID
-                                      0x00,                   // reserved0
-                                      0x00, 0x00,             // txReady
-                                      0x00, 0x00, 0x00, 0x00, // mode
-                                      0x00, 0x00, 0x00, 0x00, // baudRate
-                                      0x00, 0x00,             // inProtoMask
-                                      0x00, 0x00,             // outProtoMask
-                                      0x00, 0x00,             // reserved4
-                                      0x00, 0x00 };           // reserved5
 
 void openGPX () {
 #ifdef ALLOW_FSFPRINTF
@@ -58,8 +37,11 @@ void openExtensions() {
 
 void speed(double knots) {
 #ifdef ALLOW_FSFPRINTF
+    double mph;
     char string[64];
-    sprintf(string, "\t\t\t<speed>%02.3f</speed>\r\n", knots);
+
+    mph = knots * 1.15078;
+    sprintf(string, "\t\t\t<speed>%02.3f</speed>\r\n", mph);
     FSfprintf(pointer, string);
 #endif
 }
@@ -102,3 +84,4 @@ void logWaypoint(struct RMCData *data) {
     closeExtensions();
     closeWaypoint ();
 }
+

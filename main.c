@@ -12,20 +12,16 @@
 #include "NMEAparser.h"
 #include "GPX.h"
 #include "USB/usb_function_msd.h"
+#include "TimeDate.h"
 
 #define BACKGROUND_COLOR RGBConvert(0, 0, 64)
 
-char file[32];
 bool logging = false;
-char timeDateFileString[16];
-char timeString[32];
-char dateString[32];
-char latlong_string[64];
-char meridian[3] = "AM";
-char s[64];
+char latlongString[64];
+char speedString[32];
 BOOL initResults;
 FSFILE *logFile;
-BUTTON *startStopButton;
+BUTTON *settingsButton;
 
 void InitializeSystem();
 void logData(struct RMCData *gps_data);
@@ -39,8 +35,8 @@ int main() {
     InitializeSystem();
 
     SetColor(LIGHTGRAY);
-    OutTextXY(30, 60, "Latitude\
-              Longitude");
+    OutTextXY(30, 60, "Latitude              Longitude");
+    OutTextXY(20, 175, "Mode: Manual");
 
     while (true) {
         // Process user input
@@ -100,20 +96,22 @@ void InitializeSystem() {
     SetFont((void*)&GOLFontDefault);
     OutTextXY(40, 205, "Logging OFF");
 
-    startStopButton = BtnCreate(  1,                // Unique ID
-                                190,                // left
+    settingsButton =  BtnCreate(  3,                // Unique ID
+                                175,                // left
                                 190,                // top
                                 310,                // right
                                 230,                // bottom
                                 0,                  // radius
                                 BTN_DRAW,           // state
                                 NULL,               // no bitmap
-                                "Start",            // text
+                                "Start",         // text
                                 NULL                // default style scheme
                               );
 }
 
 void startLogging() {
+    char file[32];
+
     logging = true;
 
     // Change status
@@ -125,9 +123,9 @@ void startLogging() {
     // Show green dot
     FillCircle(20, 220, 9);
 
-    startStopButton->pText = "Stop";
+    BtnSetText(settingsButton, "Stop");
 
-    sprintf(file, "GPSData%s.GPX", timeDateFileString);
+    sprintf(file, "GPSData%s.GPX", getTimeDateFileString());
     logFile = gpsFileOpen(file);
 }
 
@@ -143,113 +141,54 @@ void stopLogging() {
     // Show red dot
     FillCircle(20, 220, 9);
 
-    startStopButton->pText = "Start";
+    BtnSetText(settingsButton, "Start");
 
     if (initResults) {
         gpsFileClose();
     }
 }
 
-char* month(unsigned int m) {
-    char* mon = NULL;
-    switch(m) {
-        case 1:
-            mon = "January";
-            break;
-        case 2:
-            mon = "February";
-            break;
-        case 3:
-            mon = "March";
-            break;
-        case 4:
-            mon = "April";
-            break;
-        case 5:
-            mon = "May";
-            break;
-        case 6:
-            mon = "June";
-            break;
-        case 7:
-            mon = "July";
-            break;
-        case 8:
-            mon = "August";
-            break;
-        case 9:
-            mon = "September";
-            break;
-        case 10:
-            mon = "October";
-            break;
-        case 11:
-            mon = "November";
-            break;
-        case 12:
-            mon = "December";
-            break;
-    }
-    return mon;
-}
-
-unsigned int getHour(struct RMCData *gps_data) {
-    unsigned int hour = gps_data->fix_time.hour;
-
-    if (gps_data->fix_time.hour > 12) {
-        hour -= 12;
-    }
-
-    if (hour > 4) {
-        hour -= 4;
-    } else {
-        hour = hour + 12 - 4;
-    }
-
-    if ((gps_data->fix_time.hour - 4) > 11)
-        meridian[0] = 'P';
-    else
-        meridian[0] = 'A';
-
-    return hour;
-}
-
 void logData(struct RMCData *gps_data) {
-    char oldlatlon_string[64];
+    char oldLatlonString[64];
     char oldDateString[32];
+    char oldSpeedString[32];
 
-    sprintf(timeDateFileString, "%02u%02u%02u.%02u%02u%02u", gps_data->date.year,
-            gps_data->date.month, gps_data->date.day, gps_data->fix_time.hour,
-            gps_data->fix_time.min, (unsigned int)gps_data->fix_time.sec);
+    updateTimeDateFileString(gps_data->fix_time, gps_data->date);
 
     // Time
     SetColor(BACKGROUND_COLOR);
-    OutTextXY(185, 0, timeString);
-    sprintf(timeString, "%02u:%02u:%02u %s", getHour(gps_data),
-            gps_data->fix_time.min, (unsigned int)gps_data->fix_time.sec, meridian);
+    OutTextXY(185, 0, getTimeString());
     SetColor(WHITE);
-    OutTextXY(185, 0, timeString);
+    OutTextXY(185, 0, updateTimeString(gps_data->fix_time));
 
     // Date
-    strcpy(oldDateString, dateString);
-    sprintf(dateString, "%s %02u, 20%02u", month(gps_data->date.month),
-            gps_data->date.day, gps_data->date.year);
-    if ((strcmp(oldDateString, dateString) != 0) && (gps_data->date.month != 0)) {
+    strcpy(oldDateString, getDateString());
+    if ((strcmp(oldDateString, updateDateString(gps_data->date)) != 0)
+            && (gps_data->date.month != 0)) {
         SetColor(BACKGROUND_COLOR);
         OutTextXY(0,0, oldDateString);
         SetColor(WHITE);
-        OutTextXY(0,0, dateString);
+        OutTextXY(0,0, getDateString());
     }
 
     // Lat, long
-    strcpy(oldlatlon_string, latlong_string);
-    sprintf(latlong_string, "%02.4f\"                %02.4f\"    ",
+    strcpy(oldLatlonString, latlongString);
+    sprintf(latlongString, "%02.4f\"                %02.4f\"    ",
               gps_data->latitude, gps_data->longitude);
-    if (strcmp(oldlatlon_string, latlong_string) != 0) {
+    if (strcmp(oldLatlonString, latlongString) != 0) {
         SetColor(BACKGROUND_COLOR);
-        OutTextXY(30, 90, oldlatlon_string);
+        OutTextXY(30, 90, oldLatlonString);
         SetColor(WHITE);
-        OutTextXY(30, 90, latlong_string);
+        OutTextXY(30, 90, latlongString);
+    }
+
+    strcpy(oldSpeedString, speedString);
+    sprintf(speedString, "Speed: %.1f mph", gps_data->speed_knots * 1.15078);
+    if (strcmp(oldSpeedString, speedString) != 0) {
+        SetColor(BACKGROUND_COLOR);
+        OutTextXY(90, 130, oldSpeedString);
+        SetColor(WHITE);
+        OutTextXY(90, 130, speedString);
     }
 
     if (MDD_SDSPI_MediaDetect() == FALSE) {
@@ -282,7 +221,7 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg) {
         case TYPE_TOUCHSCREEN:
             switch (pMsg->uiEvent) {
                 case EVENT_PRESS:
-                    if (pObj->ID == 1) {
+                    if (pObj->ID == 3) {
                         if (logging) {
                             stopLogging();
                         } else {

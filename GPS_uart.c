@@ -9,6 +9,17 @@
 #define MAX_BUFFER_SIZE 128
 #define __U2_ISR    __attribute__((interrupt, shadow, no_auto_psv))
 
+const char disable_uart_string [] = { 0xB5, 0x62, 0x06, 0x00, // Header and ID
+                                      0x01,                   // portID
+                                      0x00,                   // reserved0
+                                      0x00, 0x00,             // txReady
+                                      0x00, 0x00, 0x00, 0x00, // mode
+                                      0x00, 0x00, 0x00, 0x00, // baudRate
+                                      0x00, 0x00,             // inProtoMask
+                                      0x00, 0x00,             // outProtoMask
+                                      0x00, 0x00,             // reserved4
+                                      0x00, 0x00 };           // reserved5
+
 bool parse_buf_ready = false;
 char buffer1[MAX_BUFFER_SIZE];
 char buffer2[MAX_BUFFER_SIZE];

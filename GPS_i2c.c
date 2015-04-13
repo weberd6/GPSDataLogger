@@ -3,6 +3,17 @@
 #include <p24EP512GU810.h>
 #include <i2c.h>
 
+const char enable_i2c_string [] = { 0xB5, 0x62, 0x06, 0x00, // Header and ID
+                                    0x00,                   // portID
+                                    0x00,                   // reserved0
+                                    0x00, 0x00,             // txReady
+                                    0x00, 0x00, 0x00, 0x84, // mode
+                                    0x00, 0x00, 0x00, 0x00, // reserved3
+                                    0x00, 0x03,             // inProtoMask
+                                    0x00, 0x02,             // outProtoMask
+                                    0x00, 0x00,             // reserved4
+                                    0x00, 0x00 };           // reserved5
+
 void randomReadAddress(unsigned char device_address, unsigned char register_address) {
     while (true) {
         StartI2C2();

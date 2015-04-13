@@ -16,5 +16,14 @@ struct time_t {
     double sec;
 };
 
+extern char* month(unsigned int m);
+extern unsigned int getHour(unsigned int utc_hour);
+extern char* getTimeString();
+extern char* updateTimeString(struct time_t time);
+extern char* getDateString();
+extern char* updateDateString(struct date_t date);
+extern char* getTimeDateFileString();
+extern char* updateTimeDateFileString(struct time_t time, struct date_t date);
+
 #endif	/* TIMEDATE_H */
 
