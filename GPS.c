@@ -56,13 +56,13 @@ void InitializeSystem() {
     SST25_CS_TRIS = 0;
     FlashInit(&spi_config);
 
+    DisplayBacklightOn();
     TouchInit(NVMWrite, NVMRead, NVMSectorErase, NULL);
 
     log_interval = 5;
     updateLogIntervalString(5);
     log_interval_count = 5;
 
-    DisplayBacklightOn();
     SetColor(BACKGROUND_COLOR);
     ClearDevice();
     SetFont((void*)&GOLFontDefault);
