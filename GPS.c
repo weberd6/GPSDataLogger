@@ -105,6 +105,7 @@ bool GPSTasks() {
 }
 
 void USBTTasks() {
+    USBDeviceTasks();
     if (mode == TRANSFER) {
         if (USBGetDeviceState() == DETACHED_STATE) {
             USBDeviceAttach();
