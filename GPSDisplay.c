@@ -25,7 +25,7 @@ PICTURE    *SDCardStatus;
 GROUPBOX    *settingsGB;
 STATICTEXT  *ssText;
 RADIOBUTTON *ssManualRB;
-RADIOBUTTON *ssTDRB;
+//RADIOBUTTON *ssTDRB;
 STATICTEXT  *logIntervalText;
 EDITBOX     *logInterval;
 BUTTON      *logIntervalUpButton;
@@ -48,9 +48,9 @@ void createGraphicsObjects() {
     // Logging Settings
     settingsGB = GbCreate(LOGGING_SETTINGS_GB, 5, 0, 315, 235, GB_HIDE, "Logging Settings", NULL);
     ssText = StCreate(START_TEXT, 10, 25, 120, 50, ST_HIDE, "Start/Stop:", NULL);
-    ssManualRB = RbCreate(MANUAL_START_RB, 20, 50, 110, 75, RB_HIDE | RB_DISABLED | RB_GROUP, "Manual", NULL);;
-    ssTDRB = RbCreate(TIMEDATE_START_RB, 20, 75, 110, 100, RB_HIDE | RB_DISABLED, "Time/Date", NULL);
-    logIntervalText = StCreate(LOG_INTERVAL_TEXT, 10, 155, 310, 180, ST_HIDE, "Log Interval:                   seconds", NULL);
+    ssManualRB = RbCreate(MANUAL_START_RB, 20, 50, 110, 75, RB_HIDE | RB_DISABLED | RB_GROUP | RB_CHECKED, "Manual", NULL);;
+//    ssTDRB = RbCreate(TIMEDATE_START_RB, 20, 75, 110, 100, RB_HIDE | RB_DISABLED, "Time/Date", NULL);
+    logIntervalText = StCreate(LOG_INTERVAL_TEXT, 10, 155, 310, 180, ST_HIDE, "Log Interval:                seconds", NULL);
     logInterval = EbCreate(LOG_INTERVAL_EDITBOX, 135, 155, 185, 180, EB_HIDE | EB_RIGHT_ALIGN, "5", 4, NULL);
     logIntervalUpButton = BtnCreate(LOGINTERVAL_UP_BUTTON, 185, 155, 205, 167, 0, BTN_HIDE | BTN_DRAW, NULL, NULL, NULL);
     logIntervalDownButton = BtnCreate(LOGINTERVAL_DOWN_BUTTON, 185, 168, 205, 180, 0, BTN_HIDE | BTN_DRAW, NULL, NULL, NULL);
@@ -202,7 +202,7 @@ void drawLogSettingsScreen() {
     SetState(settingsGB, GB_DRAW);
     SetState(ssText, ST_DRAW);
     SetState(ssManualRB, RB_DRAW);
-    SetState(ssTDRB, RB_DRAW);
+//    SetState(ssTDRB, RB_DRAW);
     SetState(logInterval, EB_DRAW);
     SetState(logIntervalText, ST_DRAW);
     SetState(applyButton, BTN_DRAW);
@@ -215,7 +215,7 @@ void drawLogSettingsScreen() {
     ClrState(logIntervalUpButton, BTN_DISABLED);
     ClrState(logIntervalDownButton, BTN_DISABLED);
     ClrState(ssManualRB, RB_DISABLED);
-    ClrState(ssTDRB, RB_DISABLED);
+//    ClrState(ssTDRB, RB_DISABLED);
     ClrState(logInterval, EB_DISABLED);
 }
 
@@ -223,7 +223,7 @@ void hideLogSettingsScreen() {
     SetState(settingsGB, GB_HIDE);
     SetState(ssText, ST_HIDE);
     SetState(ssManualRB, RB_HIDE | RB_DISABLED);
-    SetState(ssTDRB, RB_HIDE | RB_DISABLED);
+//    SetState(ssTDRB, RB_HIDE | RB_DISABLED);
     SetState(logIntervalText, ST_HIDE);
     SetState(logInterval, EB_HIDE | EB_DISABLED);
     SetState(applyButton, BTN_HIDE | BTN_DISABLED);
