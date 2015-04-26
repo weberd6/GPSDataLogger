@@ -217,6 +217,7 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg) {
                     mode = LOGGING;
                 }
                 mode_changed = true;
+                log_status_changed = true;
             }
             break;
         case LOCKSCREEN_BUTTON:
