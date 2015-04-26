@@ -1,7 +1,7 @@
 #ifndef NMEAPARSER_H
 #define	NMEAPARSER_H
 
-#include "TimeDate.h"
+#include "GPSTimeDate.h"
 
 enum direction_t {
     NORTH,

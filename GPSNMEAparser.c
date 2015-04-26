@@ -5,8 +5,8 @@
 #include <p24EP512GU810.h>
 #include <spi.h>
 
-#include "NMEAparser.h"
-#include "GPX.h"
+#include "GPSNMEAparser.h"
+#include "GPSGPX.h"
 
 enum sentence_type_t SentenceType(char* string) {
     if (strcmp(string, "GPRMC") == 0) {
@@ -34,6 +34,7 @@ char* time(char* string, struct RMCData *data) {
     data->fix_time.min = (string[2]-48)*10 + (string[3]-48);
     string[6] = '\0';
     data->fix_time.sec = atof(&string[4]);
+    data->fix_time.secc = (unsigned char)data->fix_time.sec;
 
     return string + 10*sizeof(char);
 }

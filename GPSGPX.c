@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-#include "GPX.h"
+#include "GPSGPX.h"
 
 FSFILE *pointer;
 

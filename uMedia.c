@@ -9,7 +9,6 @@
 
 #define __T3_ISR    __attribute__((interrupt, shadow, no_auto_psv))
 
-#ifdef _TOUCH
 void __T3_ISR _T3Interrupt(void)
 {
    // Clear flag
@@ -31,8 +30,6 @@ void TickInit( unsigned period_ms)
    IEC0bits.T3IE = 1;          // Enable interrupt
    T3CONbits.TON = 1;          // Run timer
 }
-#endif
-
 
 void uMBInit( void)
 {
@@ -77,36 +74,4 @@ void uMBInit( void)
     ANSELG = 0;   // all inputs digital
 
 } // uMBInit
-
-
-#ifdef _SCREENCAPTURE
-void ScreenCapture( char *filename)
-{
-    FSFILE *fp;
-    GFX_COLOR Row[ 320];
-    int i, j;
-
-    // open file
-    fp = FSfopen( filename, FS_WRITE);
-    if ( fp != NULL)
-    {
-        // dump contents of the screen
-        for(j=0; j<=GetMaxY(); j++)
-        {
-            // row by row
-            for( i=0; i<=GetMaxX(); i++)
-            {
-                Row[ i] = GetPixel( i, j);
-            }
-
-            // write buffer to file
-            FSfwrite( Row, sizeof(Row), 1, fp);
-        }
-
-        // close file
-        FSfclose( fp);
-
-    }
-}
-#endif // _SCREENCAPTURE
  

@@ -4,7 +4,7 @@
 #include <timer.h>
 #include <uart.h>
 
-#include "GPS_uart.h"
+#include "GPSuart.h"
 
 #define MAX_BUFFER_SIZE 128
 #define __U2_ISR    __attribute__((interrupt, shadow, no_auto_psv))

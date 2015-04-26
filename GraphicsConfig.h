@@ -9,6 +9,7 @@
 
 #define COLOR_DEPTH    16
 
+#define USE_TRANSPARENT_COLOR
 
 #define GFX_malloc(size) malloc(size)
 #define GFX_free( pObj)  free( pObj)
@@ -51,14 +52,14 @@
 #define USE_BUTTON                  // Enable Button Object.
 //#define USE_WINDOW                  // Enable Window Object.
 //#define USE_CHECKBOX              // Enable Checkbox Object.
-//#define USE_RADIOBUTTON           // Enable Radio Button Object.
-//#define USE_EDITBOX               // Enable Edit Box Object.
+#define USE_RADIOBUTTON           // Enable Radio Button Object.
+#define USE_EDITBOX               // Enable Edit Box Object.
 //#define USE_LISTBOX               // Enable List Box Object.
 //#define USE_SLIDER                  // Enable Slider or Scroll Bar Object.
 //#define USE_PROGRESSBAR           // Enable Progress Bar Object.
-//#define USE_STATICTEXT              // Enable Static Text Object.
-//#define USE_PICTURE               // Enable Picture Object.
-//#define USE_GROUPBOX              // Enable Group Box Object.
+#define USE_STATICTEXT              // Enable Static Text Object.
+#define USE_PICTURE               // Enable Picture Object.
+#define USE_GROUPBOX              // Enable Group Box Object.
 //#define USE_ROUNDDIAL             // Enable Dial Object.
 //#define USE_METER                 // Enable Meter Object.
 //#define USE_CUSTOM                // Enable Custom Control Object (an example to create customized Object).
