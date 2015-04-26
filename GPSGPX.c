@@ -24,7 +24,7 @@ void timeDate (struct time_t time, struct date_t date) {
 #ifdef ALLOW_FSFPRINTF
     char string_ISO8601[64];
     sprintf(string_ISO8601, "20%02u-%02u-%02uT%02u:%02u:%02uZ", date.year,
-            date.month, date.day, getHour(time.hour), time.min, (unsigned int)time.sec);
+            date.month, date.day, time.hour, time.min, (unsigned int)time.sec);
     FSfprintf(pointer, "\t\t<time>%s</time>\r\n", string_ISO8601);
 #endif
 }

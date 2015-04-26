@@ -107,9 +107,7 @@ bool GPSTasks() {
 void USBTTasks() {
     USBDeviceTasks();
     if (mode == TRANSFER) {
-        if (USBGetDeviceState() == DETACHED_STATE) {
-            USBDeviceAttach();
-        } else if(USBGetDeviceState() < CONFIGURED_STATE) {
+        if(USBGetDeviceState() < CONFIGURED_STATE) {
             return;
         } else {
             MSDTasks();
@@ -156,6 +154,7 @@ void updateStrings(struct RMCData *gps_data) {
 void logData(struct RMCData *gps_data) {
     if (!MDD_SDSPI_MediaDetect() && sdcard_status) {
         sdcard_status = FALSE;
+        logging = false;
         stopLogging();
         logFile = NULL;
         sdcard_status_changed = true;
@@ -210,8 +209,10 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg) {
         case USBT_MODE_BUTTON:
             if (objMsg == BTN_MSG_RELEASED) {
                 if(mode == LOGGING) {
-                    if(logging)
+                    if(logging) {
+                        logging = false;
                         stopLogging();
+                    }
                     mode = TRANSFER;
                 } else if (mode == TRANSFER) {
                     USBSoftDetach();
