@@ -17,10 +17,10 @@ enum sentence_type_t SentenceType(char* string) {
 }
 
 unsigned char calculateChecksum(char *string) {
-    unsigned char checksum = 0;
+    unsigned char checksum = string[0];
     char *cur;
 
-    for (cur = string; *cur != '*'; cur++) {
+    for (cur = &string[1]; *cur != '*'; cur++) {
         checksum ^= *cur;
     }
     return checksum;
@@ -86,12 +86,12 @@ char* date(char* string, struct RMCData *data) {
 
 char* magneticVariation(char* string, struct RMCData *data) {
     if (*string == ',')
-        return string + 2*sizeof(char);
+        return string + 4*sizeof(char);
 
     string[5] = '\0';
     data->mag_var = atof(string);
 
-    return string + 7*sizeof(char);
+    return string + 9*sizeof(char);
 }
 
 int checksum(char* string, unsigned char ccs) {
@@ -139,7 +139,7 @@ int parseGPRMC(char* string, struct RMCData *data, unsigned char cs) {
     data_string = magneticVariation(data_string, data);
 
     // Checksum
-    return 0;//checksum(data_string, cs);
+    return checksum(data_string, cs);
 }
 
 int parseNMEA(char *string, struct RMCData *data) {
