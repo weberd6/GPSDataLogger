@@ -111,11 +111,8 @@ void updateSpeedDisplay() {
 void updateModeDisplay(enum mode_t mode) {
     if(mode == LOGGING) {
         transferButton->pBitmap = (void*)&Monitor;
-        SetState(manualLogButton, BTN_DRAW);
-        ClrState(manualLogButton, BTN_DISABLED);
     } else if (mode == TRANSFER) {
         transferButton->pBitmap = (void*)&Save_data;
-        SetState(manualLogButton, BTN_HIDE | BTN_DISABLED);
     }
     SetState(transferButton, BTN_DRAW);
 }

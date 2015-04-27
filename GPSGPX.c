@@ -8,7 +8,7 @@ FSFILE *pointer;
 
 void openGPX () {
 #ifdef ALLOW_FSFPRINTF
-    FSfprintf(pointer, "<gpx version=\"1.1\" creator=\"Doug Weber\">\r\n");
+    FSfprintf(pointer, "<gpx version=\"1.1\" creator=\"Mikromedia for PIC24EP\">\r\n");
 #endif
 }
 

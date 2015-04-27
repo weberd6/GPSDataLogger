@@ -19,10 +19,6 @@ char ampm[3] = "AM";
 
 void __RTCC_ISR _RTCCInterrupt() {
     IFS3bits.RTCIF = 0;     // Clear interrupt flag
-    Nop();
-    Nop();
-    Nop();
-    Nop();
 }
 
 uint8_t dec2bcd(uint8_t n)
@@ -39,7 +35,7 @@ void InitRTCC(struct time_t time, struct date_t date) {
     TD.f.year = dec2bcd(date.year);
     TD.f.mon  = dec2bcd(date.month);
     TD.f.mday = dec2bcd(date.day);
-    TD.f.hour = dec2bcd(time.hour);
+    TD.f.hour = dec2bcd(getHour(time.hour));
     TD.f.min  = dec2bcd(time.min);
     TD.f.sec  = dec2bcd(time.sec);
     RtccWriteTimeDate(&TD, false);

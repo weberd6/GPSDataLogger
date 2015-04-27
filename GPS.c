@@ -61,7 +61,7 @@ void InitializeSystem() {
 
     log_interval = 5;
     updateLogIntervalString(5);
-    log_interval_count = 5;
+    log_interval_count = 0;
 
     SetColor(BACKGROUND_COLOR);
     ClearDevice();
@@ -92,10 +92,10 @@ bool GPSTasks() {
             if (!parseNMEA(nmea_string, &gps_data)) {
                 valid_data = true;
                 updateStrings(&gps_data);
-                log_interval_count--;
-                if (!log_interval_count) {
+                log_interval_count++;
+                if (log_interval_count >= log_interval) {
                     logData(&gps_data);
-                    log_interval_count = log_interval;
+                    log_interval_count = 0;
                 }
             }
         }
@@ -156,8 +156,8 @@ void logData(struct RMCData *gps_data) {
         sdcard_status = FALSE;
         logging = false;
         stopLogging();
-        logFile = NULL;
         sdcard_status_changed = true;
+        log_status_changed = true;
     } else if (MDD_SDSPI_MediaDetect() && !sdcard_status) {
         sdcard_status = FSInit();
         if (sdcard_status)
@@ -165,9 +165,7 @@ void logData(struct RMCData *gps_data) {
     }
 
     if (sdcard_status && logging) {
-        if(logFile != NULL) {
-            logWaypoint(gps_data);
-        }
+        logWaypoint(gps_data);
     }
 }
 
@@ -209,17 +207,12 @@ WORD GOLMsgCallback(WORD objMsg, OBJ_HEADER* pObj, GOL_MSG* pMsg) {
         case USBT_MODE_BUTTON:
             if (objMsg == BTN_MSG_RELEASED) {
                 if(mode == LOGGING) {
-                    if(logging) {
-                        logging = false;
-                        stopLogging();
-                    }
                     mode = TRANSFER;
                 } else if (mode == TRANSFER) {
                     USBSoftDetach();
                     mode = LOGGING;
                 }
                 mode_changed = true;
-                log_status_changed = true;
             }
             break;
         case LOCKSCREEN_BUTTON:
@@ -261,6 +254,7 @@ WORD GOLDrawCallback() {
                 last_screen = MAIN;
                 break;
             case LOG_SETTINGS:
+                updateLogIntervalString(log_interval);
                 drawLogSettingsScreen();
                 screen_changed = false;
                 last_screen = LOG_SETTINGS;

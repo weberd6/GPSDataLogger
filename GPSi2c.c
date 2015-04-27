@@ -21,7 +21,7 @@ void randomReadAddress(unsigned char device_address, unsigned char register_addr
 
         MasterWriteI2C2(device_address << 1); // Read, set RW bit
         IdleI2C2();
-        
+
         if (I2C2STATbits.ACKSTAT == 0)
             break;
     }
@@ -31,7 +31,7 @@ void randomReadAddress(unsigned char device_address, unsigned char register_addr
 
     RestartI2C2();
     IdleI2C2();
-    
+
     MasterWriteI2C2((device_address << 1) | 0x01); // Read, set RW bit
     IdleI2C2();
 }
@@ -43,7 +43,7 @@ void currentReadAddress(unsigned char device_address) {
 
         MasterWriteI2C2((device_address << 1) | 0x01); // Read, set RW bit
         IdleI2C2();
-        
+
         if (I2C2STATbits.ACKSTAT == 0)
             break;
     }
@@ -68,7 +68,7 @@ void writeAccess(unsigned char device_address, unsigned int num_bytes) {
 
 void readGPSData(unsigned char *bytes, unsigned int num_bytes) {
     int i;
-    
+
     for (i = 0; i < num_bytes; i++) {
         bytes[i] = MasterReadI2C2();
         AckI2C2();
