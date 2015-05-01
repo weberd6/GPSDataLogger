@@ -50,7 +50,7 @@ exit:
 
 void InitGPS() {
     _U2RXR   = 0x43;
-    _RP65R    = 0x03;
+    _RP65R    = 0x03;   // UART2 transmit
     U2BRG   = BRATE;
     U2MODE  = U_ENABLE;
     U2STA   = U_TX;

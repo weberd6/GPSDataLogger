@@ -39,7 +39,6 @@ void InitializeSystem() {
 
     uMBInit();
     InitGPS();
-    InitGraph();
     TickInit(1);    // Timer3 init for touch screen detection
     GOLInit();
 
